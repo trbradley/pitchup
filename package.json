@@ -1,0 +1,22 @@
+{
+  "name": "pitchup",
+  "version": "0.0.0",
+  "description": "Connect people through sport",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/trbradley/pitchup.git"
+  },
+  "author": "giamir, trbradley, htunny, TY231618, tmgree",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/trbradley/pitchup/issues"
+  },
+  "homepage": "https://github.com/trbradley/pitchup#readme",
+  "dependencies": {
+    "bower": "^1.7.7"
+  }
+}
