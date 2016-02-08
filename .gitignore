@@ -1,0 +1,4 @@
+node_modules
+public/libs
+coverage
+npm-debug.log
