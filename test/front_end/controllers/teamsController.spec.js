@@ -14,10 +14,10 @@ describe('TeamsController', function() {
     });
   });
 
-  beforeEach(inject(function($controller, $q, $rootscope) {
+  beforeEach(inject(function($controller, $q, $rootScope) {
     TeamsResourceFactoryMock.getTeams.and.returnValue($q.when(response));
     ctrl = $controller('TeamsController');
-    scope = $rootscope;
+    scope = $rootScope;
   }));
 
   it('intializes with teams from the TeamsResource factory', function() {
