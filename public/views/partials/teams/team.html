@@ -1,4 +1,4 @@
-<div class="container achievement row" ng-controller="TeamController as ctrl">
+<div ng-controller="TeamController as ctrl">
   <header>
     <h1>{{ctrl.team.title}}</h1>
     <a ng-href="/#/teams/{{ctrl.team._id}}/enrollments/new" class="hidden-xs  pull-right" ng-show="ctrl.isLoggedIn()"><i class="glyphicon glyphicon-download-alt"></i> Join team</a>
@@ -8,9 +8,6 @@
       <h3>Team info</h3>
       <p>{{ctrl.team.capacity}}</p>
     </section>
-    <figure class="col-xs-12 col-md-offset-2 col-md-3">
-      <img class="pull-right" ng-src="{{ctrl.team.badgeLink}}" width="100px" height="100px"/>
-    </figure>
   </section>
   <a ng-href="/#/teams/{{ctrl.team._id}}/enrollments/new" class="hidden-md hidden-lg" ng-show="ctrl.isLoggedIn()"><i class="glyphicon glyphicon-download-alt"></i> Join team</a>
 </div>
