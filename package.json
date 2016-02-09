@@ -4,7 +4,8 @@
   "description": "Connect people through sport",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "bower install"
   },
   "repository": {
     "type": "git",
@@ -17,6 +18,24 @@
   },
   "homepage": "https://github.com/trbradley/pitchup#readme",
   "dependencies": {
-    "bower": "^1.7.7"
+    "bower": "^1.7.7",
+    "grunt": "^0.4.5"
+  },
+  "devDependencies": {
+    "grunt-karma": "^0.12.1",
+    "grunt-protractor-runner": "^3.0.0",
+    "grunt-protractor-webdriver": "^0.2.5",
+    "jasmine-core": "^2.4.1",
+    "jasmine-spec-reporter": "^2.4.0",
+    "karma": "^0.13.19",
+    "karma-chrome-launcher": "^0.2.2",
+    "karma-coverage": "^0.5.3",
+    "karma-jasmine": "^0.3.7",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-spec-reporter": "0.0.23",
+    "phantomjs": "^2.1.3",
+    "phantomjs-prebuilt": "^2.1.3",
+    "protractor": "^3.0.0",
+    "webdriver-manager": "^8.0.0"
   }
 }
