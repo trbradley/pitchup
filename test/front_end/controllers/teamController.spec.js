@@ -1,6 +1,6 @@
 describe('TeamController', function() {
   var response = {
-    data: { teamName: 'Arsenal', capacity: '2', numberPlayes: '1' }
+    data: { teamName: 'Arsenal', capacity: '2', numberPlayers: '1' }
   };
 
   var ctrl;
