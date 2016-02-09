@@ -1,4 +1,4 @@
-pitchup.controller('TeamsController', ['TeamsResource', 'UserAuth', function(TeamsResource, UserAuth) {
+pitchup.controller('TeamsController', ['TeamsResource', function(TeamsResource) {
   var self = this;
 
   self.init = function() {
@@ -6,10 +6,6 @@ pitchup.controller('TeamsController', ['TeamsResource', 'UserAuth', function(Tea
      .then(function(response) {
        self.teams = response.data;
      });
-  };
-
-  self.isLoggedIn = function() {
-    return UserAuth.isLoggedIn();
   };
 
   self.init();
