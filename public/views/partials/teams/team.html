@@ -1,7 +1,7 @@
 <div ng-controller="TeamController as ctrl">
   <header>
     <h1>{{ctrl.team.title}}</h1>
-    <a ng-href="/#/teams/{{ctrl.team._id}}/enrollments/new" class="hidden-xs  pull-right" ng-show="ctrl.isLoggedIn()"><i class="glyphicon glyphicon-download-alt"></i> Join team</a>
+    <a ng-href="/#/teams/{{ctrl.team._id}}/enrollments/new" class="hidden-xs  pull-right"><i class="glyphicon glyphicon-download-alt"></i> Join team</a>
   </header>
   <section class="description row">
     <section class="col-xs-12 criteria col-md-7">
@@ -9,5 +9,5 @@
       <p>{{ctrl.team.capacity}}</p>
     </section>
   </section>
-  <a ng-href="/#/teams/{{ctrl.team._id}}/enrollments/new" class="hidden-md hidden-lg" ng-show="ctrl.isLoggedIn()"><i class="glyphicon glyphicon-download-alt"></i> Join team</a>
+  <a ng-href="/#/teams/{{ctrl.team._id}}/enrollments/new" class="hidden-md hidden-lg"><i class="glyphicon glyphicon-download-alt"></i> Join team</a>
 </div>
