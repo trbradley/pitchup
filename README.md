@@ -41,4 +41,19 @@ I would like to see how many extra people a player could bring.
 * Python
 * Flask
 * PostgreSQL
-* Testing with Flask unittest
+* Tested with Flask unittest
+
+
+💊 [Setup Python backend environment on MAC](docs/setup_backend.md)
+
+## Contributions
+
+Feel free to get involved! Our waffleboard is available at https://waffle.io/trbradley/pitchup.
+
+## Contributors
+
+* [Giamir Buoncristiani](https://github.com/michaellennox)
+* [Andrew Htun](https://github.com/Htunny)
+* [Tom Bradley](https://github.com/trbradley)
+* [Tony Young](https://github.com/TY231618)
+* [Tom Green](https://github.com/Tmgree)
