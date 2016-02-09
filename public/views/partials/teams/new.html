@@ -1,0 +1,19 @@
+<div class="row" ng-controller="newTeamController as ctrl">
+    <div ng-show="error" class="alert alert-danger"></div>
+    <form class="col-xs-12 col-md-offset-3 col-md-6 form" ng-submit="ctrl.createNewTeam()">
+      <h2>Create Team</h2>
+      <div class="form-group">
+        <input type="text" class="form-control" name="teamName" placeholder="Team Name" ng-model="ctrl.teamName" autocomplete="off" required>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" name="numberOfPlayers" placeholder="Number of Players" ng-model="ctrl.numberOfPlayers" autocomplete="off" min="10" max="100" required>
+      </div>
+      <div class="form-group">
+        <input type="number" class="form-control" name="currentNumber" placeholder="Currrent Players" ng-model="ctrl.currentNumber" autocomplete="off">
+      </div>
+      <div>
+        <button type="submit" class="btn btn-default" ng-disabled="disabled">Create</button>
+      </div>
+    </form>
+  </div>
+</div>
