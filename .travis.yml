@@ -1,6 +1,9 @@
 sudo: required
 dist: trusty
 
+env:
+  - APP_SETTINGS=config.TestingConfig
+
 language: python
 python:
    - "3.5.1"
