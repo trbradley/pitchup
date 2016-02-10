@@ -24,7 +24,7 @@ pitchup.factory('TeamsResource', ['$http', '$q', function($http, $q) {
 
   teamsResource.postTeams = function(teamName, capacity, numberPlayers) {
     var deferred = $q.defer();
-    $http.post('/teams', {teamName: teamName, capcity: capacity, numberPlayers: numberPlayers}, { method: 'POST'})
+    $http.post('/teams', {teamName: teamName, capcity: capacity, numberPlayers: numberPlayers})
       .success(function (data, status) {
         if(status === 200){
           deferred.resolve(data);
