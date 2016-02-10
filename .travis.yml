@@ -29,4 +29,5 @@ before_script:
   - sleep 5
 
 after_success:
-  coveralls
+  - pip install python-coveralls --use-mirrors
+  - coveralls
