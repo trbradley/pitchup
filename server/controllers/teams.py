@@ -27,11 +27,11 @@ class TeamAPI(Resource):
         team = Team.query.get(id)
         return {'team': marshal(team, team_fields)}
 
-    def put(self, id):
-        pass
-
-    def delete(self, id):
-        pass
+    # def put(self, id):
+    #     pass
+    #
+    # def delete(self, id):
+    #     pass
 
 
 class TeamsAPI(Resource):

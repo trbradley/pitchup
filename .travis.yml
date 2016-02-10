@@ -1,16 +1,33 @@
+sudo: required
+dist: trusty
+
 language: python
-
 python:
-  - "3.5"
-  - "3.4"
-  - "2.7"
-
-install:
-  - pip install -r requirements.txt
-  - pip install coveralls
-
+   - "3.4"
+   - "3.4.3"
+   - "3.5"
+   
 script:
-  - python manage.py cov
+ - npm test
 
-after_success:
-  coveralls
+addons:
+  postgresql: "9.3"
+
+before_script:
+  - psql -c 'create database pitchup_development;' -U postgres
+  - python db.py db init
+  - python db.py db migrate
+  - python db.py db upgrade
+  - sudo apt-get update -q
+  - sudo wget -qO- https://deb.nodesource.com/setup_5.x | sudo bash -
+  - sudo apt-get install -y nodejs postfix
+  - nodejs -v
+  - sudo npm install -g grunt-cli
+  - sudo npm install
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - npm start &
+  - sleep 5
+
+# after_success:
+#   coveralls
