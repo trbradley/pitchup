@@ -1,6 +1,14 @@
 describe('TeamsController', function() {
   var response = {
-    data: { capacity: '5' }
+    data: {
+      "teams": [
+        {
+          "capacity": 10,
+          "name": "squadra",
+          "number_players": 7
+        }
+      ]
+    }
   };
 
   var ctrl;
@@ -23,7 +31,7 @@ describe('TeamsController', function() {
   it('intializes with teams from the TeamsResource factory', function() {
     scope.$digest();
     expect(ctrl.teams)
-      .toEqual(response.data);
+      .toEqual(response.data.teams);
   });
 
 });

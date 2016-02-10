@@ -12,6 +12,7 @@ from server.models.team import Team
 ################
 
 team_fields = {
+    'id': fields.Integer,
     'name': fields.String,
     'capacity': fields.Integer,
     'number_players': fields.Integer

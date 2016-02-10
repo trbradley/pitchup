@@ -4,7 +4,7 @@ pitchup.controller('TeamsController', ['TeamsResource', function(TeamsResource) 
   self.init = function() {
     TeamsResource.getTeams()
      .then(function(response) {
-       self.teams = response.data;
+       self.teams = response.data.teams;
      });
   };
 
