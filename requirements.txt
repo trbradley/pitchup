@@ -1,7 +1,9 @@
 alembic==0.8.4
+aniso8601==1.1.0
 coverage==4.0.3
 Flask==0.10.1
 Flask-Migrate==1.7.0
+Flask-RESTful==0.3.5
 Flask-Script==2.0.5
 Flask-SQLAlchemy==2.1
 Flask-Testing==0.4.2
@@ -13,7 +15,9 @@ MarkupSafe==0.23
 pbr==1.8.1
 pep8==1.7.0
 psycopg2==2.6.1
+python-dateutil==2.4.2
 python-editor==0.5
+pytz==2015.7
 six==1.10.0
 SQLAlchemy==1.0.11
 stevedore==1.10.0
