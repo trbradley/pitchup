@@ -1,4 +1,4 @@
-# PitchUp
+# PitchUp [![Build Status](https://travis-ci.org/trbradley/pitchup.svg?branch=master)](https://travis-ci.org/trbradley/pitchup)
 
 ### Mission Statement
 Connect people through sport.

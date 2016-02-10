@@ -3,6 +3,7 @@ dist: trusty
 
 env:
   - APP_SETTINGS=config.TestingConfig
+  - DATABASE_URL=postgresql://localhost/pitchup_test
 
 language: python
 python:
@@ -15,7 +16,7 @@ addons:
   postgresql: "9.3"
 
 before_script:
-  - psql -c 'create database pitchup_development;' -U postgres
+  - psql -c 'create database pitchup_test;' -U postgres
   - python manage.py db init
   - python manage.py db migrate
   - python manage.py db upgrade
