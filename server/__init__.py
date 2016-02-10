@@ -4,12 +4,11 @@
 
 import os
 
-from flask import Flask
+from flask import Flask, send_from_directory
+from flask.ext.restful import Api
 # from flask import Flask, render_template
 # from flask.ext.login import LoginManager
 # from flask.ext.bcrypt import Bcrypt
-# from flask.ext.debugtoolbar import DebugToolbarExtension
-# from flask_bootstrap import Bootstrap
 from flask.ext.sqlalchemy import SQLAlchemy
 
 
@@ -17,12 +16,8 @@ from flask.ext.sqlalchemy import SQLAlchemy
 #### config ####
 ################
 
-app = Flask(
-    __name__,
-    static_folder='../public'
-)
+app = Flask(__name__, static_folder='../public')
 app.config.from_object('server.' + os.environ['APP_SETTINGS'])
-
 
 
 ####################
@@ -32,26 +27,22 @@ app.config.from_object('server.' + os.environ['APP_SETTINGS'])
 # login_manager = LoginManager()
 # login_manager.init_app(app)
 # bcrypt = Bcrypt(app)
-# toolbar = DebugToolbarExtension(app)
-# bootstrap = Bootstrap(app)
+api = Api(app)
 db = SQLAlchemy(app)
 
-from server.models import Team
-
 @app.route('/')
-def hello():
-    return "Hello World!"
+def serve_client():
+    angular = os.path.join(os.path.dirname(os.path.abspath(__file__)),
+                                 "..", "public", "views")
+    return send_from_directory(angular, 'index.html')
 
 
 ###################
 ### blueprints ####
 ###################
 
-# from project.server.user.views import user_blueprint
-# from project.server.main.views import main_blueprint
-# app.register_blueprint(user_blueprint)
-# app.register_blueprint(main_blueprint)
-
+from server.controllers.teams import team_blueprint
+app.register_blueprint(team_blueprint)
 
 ###################
 ### flask-login ####
