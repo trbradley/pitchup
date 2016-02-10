@@ -18,7 +18,7 @@ module.exports = function(config) {
       '../public/js/**/*.js': ['coverage']
     },
 
-    reporters: ['spec', 'coverage'],
+    reporters: ['spec', 'coverage', 'coveralls'],
 
     port: 9876,
 
@@ -34,7 +34,7 @@ module.exports = function(config) {
     singleRun: true,
 
     coverageReporter: {
-      type : 'html',
+      type: 'lcov',
       dir : 'front_end/coverage/'
     }
 

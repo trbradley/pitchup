@@ -4,7 +4,9 @@
   "description": "Connect people through sport",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "python manage.py runserver",
+    "test": "python manage.py cov && npm run update-webdriver && grunt test",
+    "update-webdriver": "./node_modules/protractor/bin/webdriver-manager update --standalone --chrome",
     "postinstall": "bower install"
   },
   "repository": {
@@ -30,6 +32,7 @@
     "karma": "^0.13.19",
     "karma-chrome-launcher": "^0.2.2",
     "karma-coverage": "^0.5.3",
+    "karma-coveralls": "^1.1.2",
     "karma-jasmine": "^0.3.7",
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.23",
