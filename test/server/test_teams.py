@@ -9,17 +9,6 @@ from server.models.team import Team
 
 
 class TestTeamsAPI(BaseTestCase):
-
-    # def setUp(self):
-    #     team = Team(name="test team", capacity=5, number_players=4)
-    #     db.session.add(team)
-    #     db.session.commit()
-
-    # def create_team_in_db
-    #     team = Team(name="some team", capacity=11, number_players=6)
-    #     db.session.add(team)
-    #     db.session.commit()
-
     def test_post_team(self):
         """POST request to create team in database"""
         response = self.client.post(url_for('teams'),
@@ -29,7 +18,7 @@ class TestTeamsAPI(BaseTestCase):
                                         'number_players': 6
                                         })
         self.assertEqual(response.status_code, 201)
-        self.assertIn('Team created successfully', response.data)
+        self.assertIn(b'Team created successfully', response.data)
         self.assertEqual(db.session.query(Team).count(), 1)
 
     def test_cannot_post_invalid_team(self):
@@ -48,7 +37,7 @@ class TestTeamsAPI(BaseTestCase):
         db.session.commit()
         response = self.client.get('/teams')
         self.assertEqual(response.status_code, 200)
-        self.assertIn('some team', response.data)
+        self.assertIn(b'some team', response.data)
 
     def test_get_individual_team(self):
         """GET request to view individual team"""
@@ -57,7 +46,8 @@ class TestTeamsAPI(BaseTestCase):
         db.session.commit()
         response = self.client.get('/teams/1')
         self.assertEqual(response.status_code, 200)
-        self.assertIn('some team', response.data)
+        self.assertIn(b'some team', response.data)
+
 
 if __name__ == '__main__':
     unittest.main()

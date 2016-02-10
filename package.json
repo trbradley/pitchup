@@ -5,6 +5,7 @@
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "update-webdriver": "./node_modules/protractor/bin/webdriver-manager update --standalone --chrome",
     "postinstall": "bower install"
   },
   "repository": {
