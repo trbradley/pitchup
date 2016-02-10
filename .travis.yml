@@ -2,8 +2,7 @@ sudo: required
 dist: trusty
 
 env:
-  - APP_SETTINGS=config.TestingConfig
-  - DATABASE_URL=postgresql://localhost/pitchup_test
+  - APP_SETTINGS=config.TestingConfig DATABASE_URL=postgresql://localhost/pitchup_test
 
 language: python
 python:
