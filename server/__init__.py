@@ -36,13 +36,7 @@ def serve_client():
                                  "..", "public", "views")
     return send_from_directory(angular, 'index.html')
 
-
-###################
-### blueprints ####
-###################
-
-from server.controllers.teams import team_blueprint
-app.register_blueprint(team_blueprint)
+import server.controllers.teams
 
 ###################
 ### flask-login ####

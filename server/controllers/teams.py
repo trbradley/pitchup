@@ -2,7 +2,7 @@
 #### imports ####
 #################
 
-from flask import Blueprint, url_for, request
+from flask import url_for, request
 from flask.ext.restful import Resource, fields, marshal, reqparse
 from server import api, db
 from server.models.team import Team
@@ -11,7 +11,6 @@ from server.models.team import Team
 #### config ####
 ################
 
-team_blueprint = Blueprint('team', __name__,)
 team_fields = {
     'name': fields.String,
     'capacity': fields.Integer,
