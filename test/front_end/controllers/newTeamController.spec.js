@@ -22,7 +22,7 @@ describe('NewTeamController', function() {
     scope = $rootScope;
   }));
 
-  describe('#createNewTeam()', function() {
+  describe('#createNewTeam', function() {
     it('redirects to /#/teams', function() {
       ctrl.createNewTeam();
       scope.$digest();

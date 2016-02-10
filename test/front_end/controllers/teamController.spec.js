@@ -1,6 +1,6 @@
 describe('TeamController', function() {
   var response = {
-    data: { teamName: 'Arsenal', capacity: '2', numberPlayers: '1' }
+    data: { team: { name: 'Arsenal', capacity: '2', numberPlayers: '1' } }
   };
 
   var ctrl;
@@ -23,6 +23,6 @@ describe('TeamController', function() {
   it('initializes with team info from the teamsResource factory', function() {
     scope.$digest();
     expect(ctrl.team)
-      .toEqual(response.data);
+      .toEqual(response.data.team);
   });
 });

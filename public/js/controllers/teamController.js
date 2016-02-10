@@ -5,7 +5,7 @@ pitchup.controller('TeamController', ['TeamsResource', '$routeParams', function(
   self.init = function() {
     TeamsResource.getTeam(self.id)
       .then(function(response) {
-        self.team = response.data;
+        self.team = response.data.team;
       });
   };
 

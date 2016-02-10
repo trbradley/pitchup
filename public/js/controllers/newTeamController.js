@@ -2,7 +2,7 @@ pitchup.controller('NewTeamController', ['TeamsResource', '$window', function(Te
   var self = this;
 
   self.createNewTeam = function() {
-    TeamsResource.postTeams(self.name, self.capacity)
+    TeamsResource.postTeams(self.teamName, self.capacity, self.numberPlayers)
       .then(function() {
         $window.location.href = '/#/teams';
       });
