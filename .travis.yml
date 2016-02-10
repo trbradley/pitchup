@@ -25,7 +25,7 @@ before_script:
   - nodejs -v
   - sudo npm install -g grunt-cli
   - sudo npm install
-  - sudo bower install
+  - sudo ./node_modules/bower/bin/bower install
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - npm start &
