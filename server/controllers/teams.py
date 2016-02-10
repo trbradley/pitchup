@@ -47,7 +47,7 @@ class TeamsAPI(Resource):
             'capacity',
             type=int,
             required=True,
-            help='No capacity team provided'
+            help='No team capacity provided'
         )
         self.reqparse.add_argument(
             'number_players',
