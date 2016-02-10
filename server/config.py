@@ -3,7 +3,6 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig(object):
-    """Base configuration."""
     SECRET_KEY = ''
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
@@ -14,7 +13,6 @@ class BaseConfig(object):
 
 
 class DevelopmentConfig(BaseConfig):
-    """Development configuration."""
     DEBUG = True
     BCRYPT_LOG_ROUNDS = 1
     WTF_CSRF_ENABLED = False
@@ -23,7 +21,6 @@ class DevelopmentConfig(BaseConfig):
 
 
 class TestingConfig(BaseConfig):
-    """Testing configuration."""
     DEBUG = True
     TESTING = True
     BCRYPT_LOG_ROUNDS = 1
@@ -33,7 +30,6 @@ class TestingConfig(BaseConfig):
 
 
 class ProductionConfig(BaseConfig):
-    """Production configuration."""
     SECRET_KEY = 'adaa759e2a1afdaa6f96c318d7c459139ecdbbc424ad0a01231babb5c4a17a46'
     DEBUG = False
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']

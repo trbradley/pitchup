@@ -18,7 +18,7 @@ COV.start()
 
 from server import app, db
 
-migrate = Migrate(app, db)
+migrate = Migrate(app, db, directory='server/migrations')
 manager = Manager(app)
 
 # migrations
