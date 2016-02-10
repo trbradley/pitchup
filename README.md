@@ -1,4 +1,4 @@
-# PitchUp [![Build Status](https://travis-ci.org/trbradley/pitchup.svg?branch=master)](https://travis-ci.org/trbradley/pitchup)
+# PitchUp [![Build Status](https://travis-ci.org/trbradley/pitchup.svg?branch=master)](https://travis-ci.org/trbradley/pitchup) [![Coverage Status](https://coveralls.io/repos/github/trbradley/pitchup/badge.svg?branch=master)](https://coveralls.io/github/trbradley/pitchup?branch=master)
 
 ### Mission Statement
 Connect people through sport.

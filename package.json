@@ -5,7 +5,7 @@
   "main": "app.js",
   "scripts": {
     "start": "python manage.py runserver",
-    "test": "python manage.py test && npm run update-webdriver && grunt test",
+    "test": "python manage.py cov && npm run update-webdriver && grunt test",
     "update-webdriver": "./node_modules/protractor/bin/webdriver-manager update --standalone --chrome",
     "postinstall": "bower install"
   },
