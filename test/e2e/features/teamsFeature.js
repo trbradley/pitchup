@@ -1,11 +1,25 @@
+var mock = require('protractor-http-mock');
+
 describe('Teams Feature', function() {
+
+  beforeEach(function() {
+    mock(['teamsFeatureMock.js']);
+  });
+
+  afterEach(function() {
+    mock.teardown();
+  });
+
   it('allows a user to create a team, view a list of teams and then view a specific team', function() {
+
+
+
     browser.get('http://localhost:5000/#/teams');
 
     var teamsList = element.all(by.repeater('team in ctrl.teams'));
     var firstTeamName = teamsList.get(0).element(by.css('a'));
 
-    expect(teamsList.count()).toEqual(0);
+    expect(teamsList.count()).toEqual(1);
 
     var header = element(by.css('header'));
     var createTeamLink = header.element(by.css('a[href*="#/teams/new"]'));
