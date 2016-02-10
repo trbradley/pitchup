@@ -16,7 +16,6 @@ $ virtualenv ~/.virtualenvs/pitchup
 $ source ~/.virtualenvs/pitchup/bin/activate
 
 $ touch ~/.virtualenvs/pitchup/bin/postactivate
-
 ```
 
 In your ```~/.virtualenvs/pitchup/bin/postactivate``` add the following:
@@ -26,13 +25,13 @@ In your ```~/.virtualenvs/pitchup/bin/postactivate``` add the following:
 
 cd ~/[path_to_your_pitchup_project]/pitchup
 export APP_SETTINGS="config.DevelopmentConfig"
+export DATABASE_URL="postgresql://localhost/pitchup_development"
 ```
 
 In your ```~/.zshrc``` add the following before any PATH definition:
 ```
 # user configuration
 export PATH=/usr/local/bin:$PATH
-
 ```
 
 In your ```~/.zshrc``` append the following:
@@ -56,7 +55,6 @@ export PIP_REQUIRE_VIRTUALENV=true
 gpip(){
    PIP_REQUIRE_VIRTUALENV="" pip "$@"
 }
-
 ```
 Now source ```~/.zshrc``` from your terminal
 ```
@@ -95,7 +93,6 @@ Let's now upgrade our databases writing (init should not be necessary cause migr
 ```
 $ python manage.py db migrate
 $ python manage.py db upgrade
-
 ```
 Now you should be able to run the flask server typing:
 ```
