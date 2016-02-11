@@ -1,6 +1,7 @@
 import os
 import unittest
 import coverage
+import server.models
 
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
