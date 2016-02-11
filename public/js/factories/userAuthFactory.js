@@ -1,4 +1,4 @@
-angular.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
+pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
   var user = null;
 
   function isLoggedIn() {
@@ -9,10 +9,10 @@ angular.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
     }
   }
 
-  function login(email, password) {
+  function login(username, password) {
     var deferred = $q.defer();
 
-    $http.post('/sessions', {username: username, email: email, password: password})
+    $http.post('/sessions', {username: username, password: password})
       .success(function (data, status) {
         if(status === 200 && data.result){
           user = true;
@@ -46,7 +46,7 @@ angular.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
     return deferred.promise;
   }
 
-  function register(email, password) {
+  function register(username, email, password) {
     var deferred = $q.defer();
 
     $http.post('/users', {username: username, email: email, password: password})
