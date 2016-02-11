@@ -37,7 +37,6 @@ class Users(Resource):
 
     def post(self):
         args = self.reqparse.parse_args()
-        print(self.reqparse.parse_args())
         if User.query.filter_by(username=args['username']).first() is not None:
             return 'Username already exists', 400
         if User.query.filter_by(email=args['email']).first() is not None:
@@ -48,7 +47,6 @@ class Users(Resource):
             password=args['password']
         )
         db.session.add(user)
-        print(db.session)
         db.session.commit()
         return 'User created successfully', 201
 
