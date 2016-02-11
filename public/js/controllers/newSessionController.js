@@ -1,26 +1,18 @@
-pitchup.controller('newSessionController',
-  ['$scope', '$window', 'UserAuth',
-  function ($scope, $window, UserAuth){
+pitchup.controller('NewSessionController',
+  ['$window', 'UserAuth',
+  function ($window, UserAuth){
+    var self = this;
 
-    console.log(UserAuth.isLoggedIn());
+    self.login = function () {
 
-    $scope.login = function () {
-      $scope.error = false;
-      $scope.disabled = true;
-
-      UserAuth.login($scope.loginForm.username, $scope.loginForm.password)
+      UserAuth.login(self.username, self.password)
 
       .then(function () {
         $window.location.href = '/#/teams';
-        $scope.disabled = false;
-        $scope.loginForm = {};
       })
 
       .catch(function () {
-        $scope.error = true;
-        $scope.errorMessage = "Invalid username and/or password";
-        $scope.disabled = false;
-        $scope.loginForm = {};
+        self.errorMessage = "Invalid username and/or password";
       });
     };
   }]);
