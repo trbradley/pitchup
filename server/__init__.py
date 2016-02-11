@@ -30,17 +30,15 @@ app.config.from_object('server.' + os.environ['APP_SETTINGS'])
 api = Api(app)
 db = SQLAlchemy(app)
 
-from server.models.team import Team
-from server.models.user import User
+
+import server.controllers.users
+import server.controllers.teams
 
 @app.route('/')
 def serve_client():
     angular = os.path.join(os.path.dirname(os.path.abspath(__file__)),
                                  "..", "public", "views")
     return send_from_directory(angular, 'index.html')
-
-import server.controllers.users
-import server.controllers.teams
 
 
 ###################
