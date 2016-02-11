@@ -39,7 +39,9 @@ def serve_client():
                                  "..", "public", "views")
     return send_from_directory(angular, 'index.html')
 
+import server.controllers.users
 import server.controllers.teams
+
 
 ###################
 ### flask-login ####
