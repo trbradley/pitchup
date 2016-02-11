@@ -8,7 +8,7 @@ pitchup.controller('newSessionController',
       $scope.error = false;
       $scope.disabled = true;
 
-      UserAuth.login($scope.loginForm.email, $scope.loginForm.password)
+      UserAuth.login($scope.loginForm.username, $scope.loginForm.password)
 
       .then(function () {
         $window.location.href = '/#/teams';

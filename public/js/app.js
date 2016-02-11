@@ -16,7 +16,7 @@ pitchup.config(['$routeProvider',
         templateUrl: 'public/views/partials/sessions/new.html'
       })
       .when('/users/new', {
-        templateUrl: 'public/view/partials/users/new.html'
+        templateUrl: 'public/views/partials/users/new.html'
       })
       .otherwise({
         redirectTo: '/teams'
