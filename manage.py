@@ -1,7 +1,6 @@
 import os
 import unittest
 import coverage
-import server.models
 
 from flask.ext.script import Manager
 from flask.ext.migrate import Migrate, MigrateCommand
@@ -17,7 +16,7 @@ COV = coverage.coverage(
 )
 COV.start()
 
-from server import app, db
+from server import app, db, auth
 
 migrate = Migrate(app, db, directory='server/migrations')
 manager = Manager(app)
