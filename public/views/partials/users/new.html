@@ -1,7 +1,7 @@
 <div class="col-md-4" ng-controller="newUserController as ctrl">
   <h1>Register</h1>
   <div ng-show="error" class="alert alert-danger">{{errorMessage}}</div>
-  <form class="form" ng-submit="ctrl.register()">
+  <form class="form" ng-submit="register()">
     <div class="form-group">
       <label>Username</label>
       <input type="text" class="form-control" name="username" ng-model="registerForm.username" required>
