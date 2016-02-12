@@ -59,6 +59,33 @@ class TestTeamsAPI(BaseTestCase):
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'test team', response.data)
 
+    def test_capacity_cannot_be_empty(self):
+        """capacity cannot be a empty"""
+        with self.assertRaises(Exception) as context:
+            self.client.post(
+                url_for('teams'),
+                data={
+                    'name': 'team',
+                    'capacity': 'hello',
+                    'number_players': '1'
+                }
+            )
+            self.assertTrue('Capacity must be a number' in context.exception)
+            self.assertEqual(db.session.query(Team).count(), 0)
+
+    def test_player_number_cannot_be_empty(self):
+        """player number cannot be a empty"""
+        with self.assertRaises(Exception) as context:
+            self.client.post(
+                url_for('teams'),
+                data={
+                    'name': 'team',
+                    'capacity': '5',
+                    'number_players': 'hello'
+                }
+            )
+            self.assertTrue('Number players must be a number' in context.exception)
+            self.assertEqual(db.session.query(Team).count(), 0)
 
 if __name__ == '__main__':
     unittest.main()
