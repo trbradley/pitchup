@@ -17,10 +17,7 @@ describe('factory: TeamsResource', function() {
       .whenGET("/teams").respond(
         [{teamName: 'Arsenal', capacity: '5', numberPlayers: '4'}]
       );
-    httpBackend
-      .whenPOST("/teams").respond(function() {
-        return [200, { message: 'Team created!' }, {}];
-      });
+
   }));
 
   afterEach(function() {
@@ -50,9 +47,24 @@ describe('factory: TeamsResource', function() {
 
   describe('#postTeams', function() {
     it('returns a success message if a team has been created', function() {
+      httpBackend
+        .whenPOST("/teams").respond(function() {
+          return [201, { message: 'Team created!' }, {}];
+        });
       teamsResource.postTeams('Dortmund', '10', '2')
         .then(function(data) {
           expect(data.message).toEqual('Team created!');
+        });
+      httpBackend.flush();
+    });
+  });
+  describe('#postTeams error', function() {
+    it('returns an error message if a team has not been created', function() {
+      httpBackend
+        .whenPOST("/teams").respond(400);
+      teamsResource.postTeams('Dortmund', '10', '2')
+        .then(function(data, status) {
+          expect(status).toBe(400);
         });
       httpBackend.flush();
     });
