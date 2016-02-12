@@ -1,6 +1,7 @@
 from flask.ext.testing import TestCase
 
-from server import app, db
+from server import app, db, session
+from server.models.user import User
 
 
 class BaseTestCase(TestCase):
@@ -11,7 +12,19 @@ class BaseTestCase(TestCase):
         return app
 
     def setUp(self):
+        args = {
+            'username': 'test',
+            'password': 'password',
+            'email': 'test@test.com'
+        }
         db.create_all()
+        user = User(args)
+        db.session.add(user)
+        db.session.commit()
+        session['user_id'] = user.id
+        with self.client as c:
+            with c.session_transaction() as sess:
+                sess['user_id'] = user.id
 
     def tearDown(self):
         db.session.remove()
