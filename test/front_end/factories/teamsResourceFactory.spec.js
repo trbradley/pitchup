@@ -21,6 +21,10 @@ describe('factory: TeamsResource', function() {
       .whenPOST("/teams").respond(function() {
         return [200, { message: 'Team created!' }, {}];
       });
+    httpBackend
+      .whenPOST("/teams").respond(function() {
+        return [300, { errorMessage: 'Error - Team was not created' }, {}];
+      });
   }));
 
   afterEach(function() {
