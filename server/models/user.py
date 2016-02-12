@@ -1,5 +1,5 @@
 from server import db
-from passlib.apps import custom_app_context as pwd_context
+from werkzeug.security import generate_password_hash, check_password_hash
 from sqlalchemy.orm import validates
 
 
@@ -17,7 +17,7 @@ class User(db.Model):
         self.password_hash = password
 
     def verify_password(self, password):
-        return pwd_context.verify(password, self.password_hash)
+        return check_password_hash(self.password_hash, password)
 
     @validates('email')
     def validate_email(self, key, email):
@@ -37,7 +37,7 @@ class User(db.Model):
             raise ValueError('Password cannot be empty.')
         if len(password_hash) < 6:
             raise ValueError('Password must be longer than 6 characters')
-        return pwd_context.encrypt(password_hash)
+        return generate_password_hash(password_hash)
 
     def __repr__(self):
         return '<id {}>'.format(self.id)

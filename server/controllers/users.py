@@ -12,7 +12,7 @@ from server.models.user import User
 ################
 
 
-class Users(Resource):
+class UsersAPI(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
         self.reqparse.add_argument(
@@ -33,7 +33,7 @@ class Users(Resource):
             required=True,
             help='No password provided'
         )
-        super(Users, self).__init__()
+        super(UsersAPI, self).__init__()
 
     def post(self):
         args = self.reqparse.parse_args()
@@ -50,4 +50,4 @@ class Users(Resource):
         db.session.commit()
         return 'User created successfully', 201
 
-api.add_resource(Users, '/users', endpoint='users')
+api.add_resource(UsersAPI, '/users', endpoint='users')
