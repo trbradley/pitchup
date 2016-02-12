@@ -1,6 +1,6 @@
-pitchup.controller('newUserController',
-  ['$window', 'UserAuth',
-  function ($window, UserAuth) {
+pitchup.controller('NewUserController',
+  ['UserAuth', '$window',
+  function (UserAuth, $window) {
     var self = this;
 
     self.register = function () {
@@ -16,13 +16,11 @@ pitchup.controller('newUserController',
         .then(function () {
           $window.location.href = '/#/teams';
           self.disabled = false;
-          self.registerForm = {};
         })
         .catch(function () {
           self.error = true;
           self.errorMessage = "Something went wrong!";
           self.disabled = false;
-          self.registerForm = {};
         });
     };
 

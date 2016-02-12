@@ -14,7 +14,7 @@ pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
 
     $http.post('/sessions', {username: username, password: password})
       .success(function (data, status) {
-        if(status === 200 && data.result){
+        if(status === 200 && data){
           user = true;
           deferred.resolve();
         } else {
@@ -35,8 +35,12 @@ pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
 
     $http.delete('/sessions')
       .success(function (data) {
-        user = false;
-        deferred.resolve();
+        if(status === 200 && data){
+          user = false;
+          deferred.resolve();
+        } else {
+          deferred.reject();
+        }
       })
       .error(function (data) {
         user = false;
@@ -51,7 +55,7 @@ pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
 
     $http.post('/users', {username: username, email: email, password: password})
       .success(function (data, status) {
-        if(status === 200 && data.result){
+        if(status === 201 && data){
           user = true;
           deferred.resolve();
         } else {

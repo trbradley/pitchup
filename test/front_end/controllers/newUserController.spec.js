@@ -1,4 +1,4 @@
-describe('newUserController', function() {
+describe('NewUserController', function() {
   var ctrl;
   var scope;
   var windowMock;
@@ -18,7 +18,7 @@ describe('newUserController', function() {
 
   beforeEach(inject(function($controller, $q, $rootScope) {
     UserAuthMock.register.and.returnValue($q.when({}));
-    ctrl = $controller('newUserController');
+    ctrl = $controller('NewUserController');
     scope = $rootScope;
   }));
 
