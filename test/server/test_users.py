@@ -37,13 +37,41 @@ class TestUser(BaseTestCase):
             self.assertTrue('Username cannot be empty.' in context.exception)
             self.assertEqual(db.session.query(User).count(), 1)
 
+    def test_cannot_create_user_if_username_already_exists(self):
+        """cannot create a user if username already exists"""
+        with self.assertRaises(Exception) as context:
+            self.client.post(
+                url_for('users'),
+                data={
+                    'username': 'test',
+                    'email': 'test@test.com',
+                    'password': '123456'
+                }
+            )
+            self.assertTrue('Username already exists.' in context.exception)
+            self.assertEqual(db.session.query(User).count(), 0)
+
+    def test_cannot_create_user_if_email_already_exists(self):
+        """cannot create a user if email already exists"""
+        with self.assertRaises(Exception) as context:
+            self.client.post(
+                url_for('users'),
+                data={
+                    'username': 'testtest',
+                    'email': 'test@test.com',
+                    'password': '123456'
+                }
+            )
+            self.assertTrue('Email already exists.' in context.exception)
+            self.assertEqual(db.session.query(User).count(), 0)
+
     def test_cannot_create_user_without_valid_email(self):
         """do not create a user with invalid email"""
         with self.assertRaises(Exception) as context:
             self.client.post(
                 url_for('users'),
                 data={
-                    'username': 'test',
+                    'username': 'testtest',
                     'email': 'testtest.com',
                     'password': '123456'
                 }
@@ -57,8 +85,8 @@ class TestUser(BaseTestCase):
             self.client.post(
                 url_for('users'),
                 data={
-                    'username': 'test',
-                    'email': 'test@test.com',
+                    'username': 'testtest',
+                    'email': 'testtest@test.com',
                     'password': ''
                 })
             self.assertTrue('Password cannot be empty.' in context.exception)
@@ -70,8 +98,8 @@ class TestUser(BaseTestCase):
             self.client.post(
                 url_for('users'),
                 data={
-                    'username': 'test',
-                    'email': 'test@test.com',
+                    'username': 'testtest',
+                    'email': 'testtest@test.com',
                     'password': '12345'
                 }
             )
