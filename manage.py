@@ -16,7 +16,7 @@ COV = coverage.coverage(
 )
 COV.start()
 
-from server import app, db, auth
+from server import app, db
 
 migrate = Migrate(app, db, directory='server/migrations')
 manager = Manager(app)
