@@ -1,26 +1,28 @@
 pitchup.controller('newUserController',
-  ['$scope', '$window', 'UserAuth',
-  function ($scope, $window, UserAuth) {
-    $scope.register = function () {
+  ['$window', 'UserAuth',
+  function ($window, UserAuth) {
+    var self = this;
 
-      $scope.error = false;
-      $scope.disabled = true;
+    self.register = function () {
+
+      self.error = false;
+      self.disabled = true;
 
       UserAuth.register(
-          $scope.registerForm.username,
-          $scope.registerForm.email,
-          $scope.registerForm.password
+          self.username,
+          self.email,
+          self.password
         )
         .then(function () {
           $window.location.href = '/#/teams';
-          $scope.disabled = false;
-          $scope.registerForm = {};
+          self.disabled = false;
+          self.registerForm = {};
         })
         .catch(function () {
-          $scope.error = true;
-          $scope.errorMessage = "Something went wrong!";
-          $scope.disabled = false;
-          $scope.registerForm = {};
+          self.error = true;
+          self.errorMessage = "Something went wrong!";
+          self.disabled = false;
+          self.registerForm = {};
         });
     };
 
