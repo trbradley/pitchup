@@ -1,5 +1,5 @@
 pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
-  var user = null;
+  var user = false;
 
   function isLoggedIn() {
     if(user) {
@@ -52,6 +52,7 @@ pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
     $http.post('/users', {username: username, email: email, password: password})
       .success(function (data, status) {
         if(status === 200 && data.result){
+          user = true;
           deferred.resolve();
         } else {
           deferred.reject();

@@ -15,21 +15,12 @@ pitchup.factory('TeamsResource', ['$http', '$q', function($http, $q) {
     });
   };
 
-  // teamsResource.getEnrollments = function(id) {
-  //   return $http({
-  //     url: '/teams/' + id + '/enrollments/new',
-  //     method: 'GET'
-  //   });
-  // };
-
   teamsResource.postTeams = function(teamName, capacity, numberPlayers) {
     var deferred = $q.defer();
     $http.post('/teams', {name: teamName, capacity: capacity, number_players: numberPlayers})
       .success(function (data, status) {
         if(status === 201){
           deferred.resolve(data);
-        } else {
-          deferred.reject();
         }
       })
       .error(function (data) {
