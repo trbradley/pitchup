@@ -8,11 +8,13 @@ class Team(db.Model):
     name = db.Column(db.String())
     capacity = db.Column(db.Integer())
     number_players = db.Column(db.Integer())
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"))
 
-    def __init__(self, name, capacity, number_players):
+    def __init__(self, name, capacity, number_players, user_id):
         self.name = name
         self.capacity = capacity
         self.number_players = number_players
+        self.user_id = user_id
 
     def __repr__(self):
-        return '<id {}>'.format(self.id)
+        return '<Team {}>'.format(self.id)

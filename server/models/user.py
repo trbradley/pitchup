@@ -10,6 +10,7 @@ class User(db.Model):
     username = db.Column(db.String())
     email = db.Column(db.String())
     password_hash = db.Column(db.String())
+    teams = db.relationship("Team", backref="user")
 
     def __init__(self, username, email, password):
         self.username = username
@@ -40,4 +41,4 @@ class User(db.Model):
         return generate_password_hash(password_hash)
 
     def __repr__(self):
-        return '<id {}>'.format(self.id)
+        return '<User {}>'.format(self.id)
