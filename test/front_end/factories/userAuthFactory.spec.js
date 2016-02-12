@@ -36,10 +36,10 @@ describe('factory: UserAuth', function() {
   describe('#register', function() {
     it('returns success string if registered successfully', function() {
       httpBackend
-        .whenPOST("/users").respond("User created successfully");
+        .whenPOST("/users").respond(201);
       userAuth.register('testuser', 'email@email.com', '123456')
         .then(function(response) {
-          expect(response.data).toEqual("User created successfully");
+          expect(response.status).toBe(201);
         });
       httpBackend.flush();
     });
@@ -57,10 +57,10 @@ describe('factory: UserAuth', function() {
   describe('#login', function() {
     it('returns success string if login is successful', function() {
       httpBackend
-        .whenPOST("/sessions").respond("Logged in successfully");
+        .whenPOST("/sessions").respond(200);
       userAuth.login('testuser', '123456')
         .then(function(response) {
-          expect(response.data).toEqual("Logged in successfully");
+          expect(response.status).toBe(200);
         });
       httpBackend.flush();
     });
