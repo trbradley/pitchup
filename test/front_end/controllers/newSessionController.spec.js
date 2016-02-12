@@ -29,4 +29,18 @@ describe('NewSessionController', function() {
       expect(windowMock.location.href).toEqual('/#/teams');
     });
   });
+
+  describe('#bad login', function() {
+
+    beforeEach(function() {
+      inject(function($q) {
+        UserAuthMock.login.and.returnValue($q.reject({}));
+      });
+    });
+    it('throws an error when login fails', function() {
+      ctrl.login();
+      scope.$digest();
+      expect(ctrl.errorMessage).toEqual('Invalid username and/or password');
+    });
+  });
 });
