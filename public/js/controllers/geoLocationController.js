@@ -1,6 +1,9 @@
 pitchup.controller('GeoLocationController',
   ['$geolocation', '$scope',
   function ($geolocation, $scope){
+    var self = this
+    var scope = $scope
+    self.isLoading = true;
     $scope.$geolocation = $geolocation
 
     // basic usage
@@ -16,4 +19,9 @@ pitchup.controller('GeoLocationController',
     });
     $scope.coords = $geolocation.position.coords; // this is regularly updated
     $scope.error = $geolocation.position.error; // this becomes truthy, and has 'code' and 'message' if an error occurs
+
+    self.init = function () {
+      setTimeout(function(){ self.isLoading = false; scope.$apply(); }, 1000);
+    };
+    self.init();
   }]);

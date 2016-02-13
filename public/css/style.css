@@ -1,3 +1,10 @@
+@import url("animate.css");
+@import url("loader.css");
+
+body{
+  background: #7D8AA1;
+}
+
 .map {
     height: 100%;
     width: 100%;
@@ -5,5 +12,84 @@
     top: 0;
     left: 0;
     z-index: 0;
-    opacity: .75;
+}
+
+.content {
+  -webkit-transition:all 0.2s linear;
+}
+
+.content.ready {
+  opacity:1;
+}
+
+.content.loading {
+  opacity:0;
+}
+
+
+nav {
+  width: 100%;
+  height: 70px;
+  background: white;
+  border-radius: 0;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #edeeee;
+}
+
+.navbar{
+  margin-bottom: 0px;
+}
+
+.navbar-toggle:before{
+  content:"\e055";;
+  font-family:"Glyphicons Halflings";
+  line-height:1;
+  margin:10px;
+  display:inline-block;
+}
+.navbar-toggle{
+  margin-bottom: -16px;
+}
+
+.nav > li{
+  background-color: white;
+  padding-left: 10px;
+}
+
+.nav > li > a{
+  font-size:14px;
+  padding: 24px 7px;
+}
+.nav > li > a:hover, .nav > li > a:focus, .nav > li > a:visited{
+  background: white;
+}
+.navbar-brand {
+    background: url('../images/logo_navbar.svg') no-repeat center center;
+    background-size: contain;
+    display:block;
+    height:29px;
+    text-indent:-9999px;
+    width:195px;
+    margin-top: 21px;
+    margin-left: 10px;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+  background-color: white;
+  color: #125688;
+}
+.dropdown-menu > li > a, .dropdown-menu > li > button{
+    background: white;
+    color: #125688;
+    font-weight: 600;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > button:hover{
+    text-decoration: none;
+    background: white;
+    color: #4b4f54;
+}
+.navbar-right .dropdown-menu{
+  text-align: center;
+  left: -50px
 }

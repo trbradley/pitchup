@@ -1,0 +1,42 @@
+.loader {
+    -webkit-transition:all 0.2s linear;
+    background: #7D8AA1;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+}
+
+.loader .logo{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 350px;
+}
+
+.loader .image{
+  position: relative;
+  margin: 0;
+  width: 500px;
+  height: 300px;
+}
+
+.loader .spinner{
+  position: relative;
+  margin: 0;
+  width: 500px;
+  height: 50px;
+}
+
+.loader.ready {
+  opacity:0;
+}
+
+.loader.loading {
+  opacity:1;
+}

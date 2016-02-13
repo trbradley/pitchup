@@ -1,6 +1,7 @@
 var pitchup = angular.module('Pitchup', [
   'ngResource',
   'ngRoute',
+  'ngAnimate',
   'ngGeolocation',
   'ngMap'
 ]);
@@ -8,7 +9,11 @@ var pitchup = angular.module('Pitchup', [
 pitchup.config(['$routeProvider',
   function($routeProvider) {
     $routeProvider
-      .when('/teams/', {
+      .when('/', {
+        controller : 'TeamsController as ctrl',
+        templateUrl: 'public/views/partials/home.html'
+      })
+      .when('/teams', {
         templateUrl: 'public/views/partials/teams/index.html'
       })
       .when('/teams/new', {
@@ -23,8 +28,11 @@ pitchup.config(['$routeProvider',
       .when('/users/new', {
         templateUrl: 'public/views/partials/users/new.html'
       })
+      .when('/users/:id', {
+        templateUrl: 'public/views/partials/users/user.html'
+      })
       .otherwise({
-        redirectTo: '/teams'
+        redirectTo: '/'
       });
   }
 ]);

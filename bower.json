@@ -27,6 +27,7 @@
     "angular-route": "^1.4.9",
     "angular-mocks": "^1.4.9",
     "ngmap": "^1.16.7",
-    "ngGeolocation": "^0.0.8"
+    "ngGeolocation": "^0.0.8",
+    "angular-animate": "^1.5.0"
   }
 }
