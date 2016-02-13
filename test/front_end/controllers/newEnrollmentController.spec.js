@@ -3,32 +3,32 @@ describe('NewEnrollmentController', function() {
   var ctrl;
   var scope;
   var windowMock;
-  var EnrollmentsResourceMock;
+  var EnrollmentsResourceFactoryMock;
   var idMock;
 
   beforeEach(function() {
     windowMock = { location : { href: jasmine.createSpy() } };
-    EnrollmentsResourceMock = jasmine.createSpyObj(
+    EnrollmentsResourceFactoryMock = jasmine.createSpyObj(
       'EnrollmentsResource', ['postEnrollments']
     );
     module('Pitchup', {
-      EnrollmentsResource: EnrollmentsResourceMock,
+      EnrollmentsResource: EnrollmentsResourceFactoryMock,
       $window: windowMock
     });
   });
 
   beforeEach(inject(function($controller, $q, $rootScope) {
-    EnrollmentsResourceMock.postEnrollments.and.returnValue($q.when(response));
+    EnrollmentsResourceFactoryMock.postEnrollments.and.returnValue($q.when(response));
     ctrl = $controller('NewEnrollmentController');
     scope = $rootScope;
   }));
 
-  describe('#enroll()', function() {
+  describe('#enroll', function() {
     it('redirects to /#/teams/:id when a user successfully joins a team', function() {
       ctrl.id = 55;
       ctrl.enroll();
       scope.$digest();
-      // expect(windowMock.location.href).toEqual('/#/teams/55');
+      expect(windowMock.location.href).toEqual('/#/teams/55');
     });
   });
 });
