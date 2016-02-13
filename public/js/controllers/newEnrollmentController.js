@@ -1,15 +1,12 @@
-pitchup.controller('NewEnrollmentController',
-  ['EnrollmentsResource', '$window',
-  function(EnrollmentsResource, $window){
+pitchup.controller('NewEnrollmentController', ['EnrollmentsResource', '$window', '$routeParams', function(EnrollmentsResource, $window, $routeParams) {
     var self = this;
+    self.id = $routeParams.id;
 
     self.enroll = function() {
-      EnrollmentsResource.postEnrollments(self.number_players)
+      EnrollmentsResource.postEnrollments(self.number_players, self.id)
         .then(function() {
-          $window.location.href = '/#/teams/:id';
-        })
-        .catch(function() {
-          self.errorMessage = "Unable to join - Team max capacity reached";
+          $window.location.href = ('/#/teams/' + self.id);
         });
     };
+
 }]);
