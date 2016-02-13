@@ -1,4 +1,4 @@
-pitchup.controller('NewEnrollmentController', ['EnrollmentsResource', '$window', '$routeParams', function(EnrollmentsResource, $window, $routeParams) {
+pitchup.controller('NewEnrollmentController', ['EnrollmentsResource', '$window', '$routeParams', function(EnrollmentsResource, $window, $routeParams){
     var self = this;
     self.id = $routeParams.id;
 

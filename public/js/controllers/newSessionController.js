@@ -16,10 +16,3 @@ pitchup.controller('NewSessionController',
       });
     };
   }]);
-
-  pitchup.controller('NewEnrollmentController',
-    ['EnrollmentsResource', '$window',
-    function(EnrollmentsResource, $window){
-      var self = this;
-
-  }]);
