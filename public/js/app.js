@@ -1,4 +1,9 @@
-var pitchup = angular.module('Pitchup', ['ngResource', 'ngRoute']);
+var pitchup = angular.module('Pitchup', [
+  'ngResource',
+  'ngRoute',
+  'ngGeolocation',
+  'ngMap'
+]);
 
 pitchup.config(['$routeProvider',
   function($routeProvider) {

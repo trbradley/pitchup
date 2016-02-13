@@ -12,7 +12,7 @@
     <title>Pitchup</title>
 
     <link rel="stylesheet" href="public/libs/bootstrap/dist/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="public/css/style.css">
 
     <script src="public/libs/jquery/dist/jquery.min.js"></script>
     <script src="public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -20,6 +20,8 @@
     <script src="public/libs/angular-resource/angular-resource.min.js"></script>
     <script src="public/libs/angular-route/angular-route.min.js"></script>
     <script src="public/libs/angular-mocks/angular-mocks.js"></script>
+    <script src="public/libs/ngmap/build/scripts/ng-map.min.js"></script>
+    <script src="public/libs/ngGeolocation/ngGeolocation.min.js"></script>
     <script src="public/js/app.js"></script>
     <script src="public/js/controllers/teamsController.js"></script>
     <script src="public/js/controllers/newTeamController.js"></script>
@@ -30,6 +32,9 @@
     <script src="public/js/controllers/newUserController.js"></script>
     <script src="public/js/controllers/logoutController.js"></script>
     <script src="public/js/controllers/userController.js"></script>
+    <script src="public/js/controllers/geoLocationController.js"></script>
+
+    <script src="http://maps.google.com/maps/api/js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -39,7 +44,8 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-controller="GeoLocationController as geoCtrl">
+    <div class="map" ng-map center="[{{location.coords.latitude}}, {{location.coords.longitude}}]"></div>
     <div ng-view class="content container"></div>
   </body>
 </html>
