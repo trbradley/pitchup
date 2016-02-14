@@ -27,7 +27,7 @@ function($q, $timeout, $http) {
       password: password
     })
     .success(function(data, status) {
-      if(status === 200 && data){
+      if(status === 201 && data){
         deferred.resolve(data);
       } else { deferred.reject(data); }
     })

@@ -30,7 +30,7 @@ class SessionsAPI(Resource):
         if user:
             if User.verify_password(user, args['password']):
                 session['user_id'] = user.id
-                return 'Logged in successfully', 200
+                return {'user_id': user.id, 'message': 'Logged in successfully'}, 201
         return 'Invalid username or password', 400
 
     def delete(self):
