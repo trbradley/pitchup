@@ -1,17 +1,12 @@
-<div class="col-md-4">
-  <h1>Login</h1>
-  <div ng-show="error" class="alert alert-danger">{{ctrl.errorMessage}}</div>
-  <form class="form" ng-submit="ctrl.login()">
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" ng-model="ctrl.username" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-      <input type="password" class="form-control" name="password" ng-model="ctrl.password" required>
-    </div>
-    <div>
-      <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
-    </div>
-  </form>
-</div>
+<form class="form" ng-submit="ctrl.login()">
+  <h2>Login</h2>
+  <div class="form-group">
+    <input type="text" class="form-control" name="username" placeholder="Username" ng-model="ctrl.username" required>
+  </div>
+  <div class="form-group">
+    <input type="password" class="form-control" name="password" placeholder="Password" ng-model="ctrl.password" required>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-default" ng-disabled="disabled">Login</button>
+  </div>
+</form>

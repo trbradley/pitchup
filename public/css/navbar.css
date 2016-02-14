@@ -8,7 +8,7 @@ nav {
   left: 0;
   border-bottom: 1px solid #edeeee;
   text-transform: uppercase;
-  opacity: 0.9;
+  opacity: 0.95;
   color: #263248;
   z-index: 10;
 }
@@ -29,7 +29,7 @@ nav {
 }
 .nav > li > a:hover, .nav > li > a:focus, .nav > li > a:visited{
   background: white;
-  opacity: 0.75;
+  opacity: 0.95;
   color: #263248;
 }
 .navbar-brand {

@@ -1,16 +1,15 @@
 pitchup.controller('NewSessionController',
-  ['$location', '$route', 'UserAuth', 'AppLoading',
-  function ($location, $route, UserAuth, AppLoading){
-    var self = this;
+['$location', '$route', 'UserAuth',
+function ($location, $route, UserAuth){
+  var self = this;
 
-    self.login = function () {
-      UserAuth.login(self.username, self.password)
-      .then(function(data) {
-        $location.path('/#/users/' + data.user_id);
-        $route.reload();
-      })
-      .catch(function(data) {
-      });
-    };
-
-  }]);
+  self.login = function () {
+    UserAuth.login(self.username, self.password)
+    .then(function(data) {
+      $location.path('/users/' + data.user_id);
+      $route.reload();
+    })
+    .catch(function(data) {
+    });
+  };
+}]);
