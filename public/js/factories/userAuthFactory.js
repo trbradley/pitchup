@@ -1,78 +1,78 @@
-pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
-  var user = false;
+pitchup.factory('UserAuth',
+['$q', '$timeout', '$http',
+function($q, $timeout, $http) {
+  var userAuth = {};
 
-  function isLoggedIn() {
-    if(user) {
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  function login(username, password) {
+  userAuth.getCurrentUser = function() {
     var deferred = $q.defer();
 
-    $http.post('/sessions', {username: username, password: password})
-      .success(function (data, status) {
-        if(status === 200 && data){
-          user = true;
-          deferred.resolve();
-        } else {
-          user = false;
-          deferred.reject();
-        }
-      })
-      .error(function (data) {
-        user = false;
-        deferred.reject();
-      });
+    $http.get('/sessions')
+    .success(function(data, status) {
+      if(status === 200 && data){
+        deferred.resolve(data.user);
+      } else { deferred.reject(data); }
+    })
+    .error(function(data) {
+      deferred.reject(data);
+    });
 
-      return  deferred.promise;
+    return deferred.promise;
   }
 
-  function logout() {
+  userAuth.login= function(username, password) {
+    var deferred = $q.defer();
+
+    $http.post('/sessions', {
+      username: username,
+      password: password
+    })
+    .success(function(data, status) {
+      if(status === 200 && data){
+        deferred.resolve(data);
+      } else { deferred.reject(data); }
+    })
+    .error(function(data) {
+      deferred.reject();
+    });
+
+    return  deferred.promise;
+  }
+
+  userAuth.logout = function() {
     var deferred = $q.defer();
 
     $http.delete('/sessions')
-      .success(function (data) {
-        if(status === 200 && data){
-          user = false;
-          deferred.resolve();
-        } else {
-          deferred.reject();
-        }
-      })
-      .error(function (data) {
-        user = false;
-        deferred.reject();
-      });
+    .success(function(data, status) {
+      if(status === 200 && data){
+        deferred.resolve(data);
+      } else { deferred.reject(data); }
+    })
+    .error(function(data) {
+      deferred.reject(data);
+    });
 
     return deferred.promise;
   }
 
-  function register(username, email, password) {
+  userAuth.register = function(username, email, password) {
     var deferred = $q.defer();
 
-    $http.post('/users', {username: username, email: email, password: password})
-      .success(function (data, status) {
-        if(status === 201 && data){
-          user = true;
-          deferred.resolve();
-        } else {
-          deferred.reject();
-        }
-      })
-      .error(function (data) {
-        deferred.reject();
-      });
+    $http.post('/users', {
+      username: username,
+      email: email,
+      password: password
+    })
+    .success(function(data, status) {
+      if(status === 201 && data){
+        deferred.resolve(data);
+      } else { deferred.reject(data); }
+    })
+    .error(function(data) {
+      deferred.reject(data);
+    });
 
     return deferred.promise;
   }
 
-  return ({
-    isLoggedIn: isLoggedIn,
-    login: login,
-    logout: logout,
-    register: register
-  });
+  return userAuth;
 }]);
