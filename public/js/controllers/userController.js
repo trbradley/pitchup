@@ -7,7 +7,7 @@ function(UsersResource, $routeParams) {
   self.init = function() {
     UsersResource.getUser(self.id)
     .then(function(response) {
-      self.user = response.data;
+      self.user = response.data.user;
     })
     .catch(function(response) {
     });

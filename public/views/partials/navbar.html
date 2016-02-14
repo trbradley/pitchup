@@ -16,6 +16,7 @@
         <a ng-show="appCtrl.currentUser" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{appCtrl.currentUser.username}}</a>
         <ul class="dropdown-menu">
           <li><a ng-click="navCollapsed = !navCollapsed" href="/#/teams">Join a Team</a></li>
+          <li><a ng-click="navCollapsed = !navCollapsed" href="/#/teams/new">Add a Team</a></li>
           <li><a ng-click="navCollapsed = !navCollapsed" href="/#/users/{{appCtrl.currentUser.id}}">Profile</a></li>
           <li><button ng-click="navCtrl.logout()" ng-click="navCollapsed = !navCollapsed" class="btn btn-link btn-logout">Logout</button></li>
         </ul>

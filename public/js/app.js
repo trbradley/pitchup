@@ -34,6 +34,7 @@ pitchup.config(['$routeProvider', '$locationProvider',
       templateUrl: 'public/views/partials/users/new.html'
     })
     .when('/users/:id', {
+      controller : 'UserController as ctrl',
       templateUrl: 'public/views/partials/users/user.html'
     })
     .otherwise({

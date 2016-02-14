@@ -1,11 +1,11 @@
 pitchup.factory('UsersResource',
 ['$http',
 function($http) {
-  var userResource = {};
+  var usersResource = {};
 
-  userResource.getUser = function(id) {
+  usersResource.getUser = function(id) {
     return $http.get('/users/' + id);
   }
 
-  return userResource;
+  return usersResource;
 }]);
