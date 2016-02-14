@@ -1,26 +1,19 @@
 pitchup.controller('NewUserController',
-  ['UserAuth', '$window',
-  function (UserAuth, $window) {
+  ['UserAuth', '$location', '$route', 'AppLoading',
+  function (UserAuth, $location, $route, AppLoading) {
     var self = this;
 
-    self.register = function () {
-
-      self.error = false;
-      self.disabled = true;
-
+    self.register = function() {
       UserAuth.register(
           self.username,
           self.email,
           self.password
         )
-        .then(function () {
-          $window.location.href = '/#/teams';
-          self.disabled = false;
+        .then(function(data) {
+          $location.path('/#/users/' + data.user_id);
+          $route.reload();
         })
-        .catch(function () {
-          self.error = true;
-          self.errorMessage = "Something went wrong!";
-          self.disabled = false;
+        .catch(function(data) {
         });
     };
 

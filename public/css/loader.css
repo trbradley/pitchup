@@ -1,11 +1,11 @@
 .loader {
-    -webkit-transition:all 0.2s linear;
-    background: #7D8AA1;
+    background: white;
     height: 100%;
     width: 100%;
     position:absolute;
     top: 0;
     left: 0;
+    z-index: 9999;
 }
 
 .loader .logo{
@@ -33,10 +33,13 @@
   height: 50px;
 }
 
-.loader.ready {
-  opacity:0;
+.loader.ng-hide-add {
+    -webkit-animation: fadeOut 0.3s;
+    animation: fadeOut  0.3s;
+    display: block !important;
 }
 
-.loader.loading {
-  opacity:1;
+.loader.ng-hide-remove {
+    -webkit-animation: none;
+    animation: none;
 }

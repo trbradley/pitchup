@@ -13,7 +13,7 @@ pitchup.factory('AppLoading', ['$rootScope', function($rootScope) {
       if(!$rootScope.$$phase) $rootScope.$apply();
     }
     clearTimeout(timer);
-    delay = delay == null ? 3000 : false;
+    delay = delay == null ? 1000 : false;
     if(delay) {
       timer = setTimeout(ready, delay);
     }

@@ -7,7 +7,6 @@ function(TeamsResource, AppLoading) {
     TeamsResource.getTeams()
      .then(function(response) {
        self.teams = response.data.teams;
-       AppLoading.ready();
      });
   };
 

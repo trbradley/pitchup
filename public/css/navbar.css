@@ -1,0 +1,63 @@
+nav {
+  width: 100%;
+  height: 70px;
+  background: white;
+  border-radius: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  border-bottom: 1px solid #edeeee;
+  text-transform: uppercase;
+  opacity: 0.9;
+  color: #263248;
+  z-index: 10;
+}
+
+.navbar{
+  margin-bottom: 0px;
+}
+
+.nav > li{
+  background-color: white;
+  padding-left: 10px;
+}
+
+.nav > li > a{
+  font-size:14px;
+  padding: 24px 7px;
+  color: #263248;
+}
+.nav > li > a:hover, .nav > li > a:focus, .nav > li > a:visited{
+  background: white;
+  opacity: 0.75;
+  color: #263248;
+}
+.navbar-brand {
+    background: url('../images/logo_navbar.svg') no-repeat center center;
+    background-size: contain;
+    display:block;
+    height:29px;
+    text-indent:-9999px;
+    width:195px;
+    margin-top: 21px;
+    margin-left: 10px;
+}
+.nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+  background-color: white;
+  color: #263248;
+}
+.dropdown-menu > li > a, .dropdown-menu > li > button{
+    text-transform: uppercase;
+    background: white;
+    color: #263248;
+}
+.dropdown-menu > li > a:hover, .dropdown-menu > li > button:hover{
+    text-decoration: none;
+    background: white;
+    opacity: 0.75;
+    color: #263248;
+}
+.navbar-right .dropdown-menu{
+  text-align: center;
+  left: -50px
+}

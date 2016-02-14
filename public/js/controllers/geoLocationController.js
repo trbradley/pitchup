@@ -1,27 +1,33 @@
 pitchup.controller('GeoLocationController',
-  ['$geolocation', '$scope',
-  function ($geolocation, $scope){
-    var self = this
-    var scope = $scope
-    self.isLoading = true;
-    $scope.$geolocation = $geolocation
+  ['$geolocation', '$scope', 'AppLoading', 'uiGmapGoogleMapApi', 'uiGmapIsReady',
+  function ($geolocation, $scope, AppLoading, uiGmapGoogleMapApi, uiGmapIsReady){
+    var self = this;
+    var scope = $scope;
 
-    // basic usage
     $geolocation.getCurrentPosition().then(function(location) {
-      $scope.location = location
+      AppLoading.loading();
+      self.location = location
+    })
+    .then(function(){return uiGmapGoogleMapApi;})
+    .then(function(maps){
+
+      // default Makers Academy coords
+      self.map = {
+        center : {
+          latitude: 51.517339,
+  				longitude: -0.073337
+        },
+        zoom : 13
+      };
+      self.map.center = {
+        latitude: self.location.coords.latitude,
+        longitude: self.location.coords.longitude
+      }
     });
 
-    // regular updates
-    $geolocation.watchPosition({
-      timeout: 60000,
-      maximumAge: 2,
-      enableHighAccuracy: true
+    uiGmapIsReady.promise()
+    .then(function(instances) {
+      AppLoading.ready();
     });
-    $scope.coords = $geolocation.position.coords; // this is regularly updated
-    $scope.error = $geolocation.position.error; // this becomes truthy, and has 'code' and 'message' if an error occurs
 
-    self.init = function () {
-      setTimeout(function(){ self.isLoading = false; scope.$apply(); }, 1000);
-    };
-    self.init();
-  }]);
+}]);

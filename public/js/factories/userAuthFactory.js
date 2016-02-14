@@ -1,29 +1,34 @@
 pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $http) {
-  var user = false;
 
-  function isLoggedIn() {
-    if(user) {
-      return true;
-    } else {
-      return false;
-    }
+  function getCurrentUser() {
+      var deferred = $q.defer();
+
+      $http.get('/sessions')
+        .success(function(data, status) {
+          if(status === 200 && data){
+            deferred.resolve(data.user);
+          } else {
+            deferred.reject(data);
+          }
+        })
+        .error(function(data) {
+          deferred.reject(data);
+        });
+      return deferred.promise;
   }
 
   function login(username, password) {
     var deferred = $q.defer();
 
     $http.post('/sessions', {username: username, password: password})
-      .success(function (data, status) {
+      .success(function(data, status) {
         if(status === 200 && data){
-          user = true;
-          deferred.resolve();
+          deferred.resolve(data);
         } else {
-          user = false;
-          deferred.reject();
+          deferred.reject(data);
         }
       })
-      .error(function (data) {
-        user = false;
+      .error(function(data) {
         deferred.reject();
       });
 
@@ -34,17 +39,15 @@ pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
     var deferred = $q.defer();
 
     $http.delete('/sessions')
-      .success(function (data) {
+      .success(function(data, status) {
         if(status === 200 && data){
-          user = false;
-          deferred.resolve();
+          deferred.resolve(data);
         } else {
-          deferred.reject();
+          deferred.reject(data);
         }
       })
-      .error(function (data) {
-        user = false;
-        deferred.reject();
+      .error(function(data) {
+        deferred.reject(data);
       });
 
     return deferred.promise;
@@ -54,23 +57,22 @@ pitchup.factory('UserAuth', ['$q', '$timeout', '$http', function($q, $timeout, $
     var deferred = $q.defer();
 
     $http.post('/users', {username: username, email: email, password: password})
-      .success(function (data, status) {
+      .success(function(data, status) {
         if(status === 201 && data){
-          user = true;
-          deferred.resolve();
+          deferred.resolve(data);
         } else {
-          deferred.reject();
+          deferred.reject(data);
         }
       })
-      .error(function (data) {
-        deferred.reject();
+      .error(function(data) {
+        deferred.reject(data);
       });
 
     return deferred.promise;
   }
 
   return ({
-    isLoggedIn: isLoggedIn,
+    getCurrentUser: getCurrentUser,
     login: login,
     logout: logout,
     register: register
