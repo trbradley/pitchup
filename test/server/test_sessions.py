@@ -17,7 +17,7 @@ class TestSessions(BaseTestCase):
                 'password': 'password'
             }
         )
-        self.assertEqual(response.status_code, 200)
+        self.assertEqual(response.status_code, 201)
         self.assertIn(b'Logged in successfully', response.data)
 
     def test_user_invalid_username_login(self):
