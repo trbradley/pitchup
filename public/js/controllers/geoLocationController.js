@@ -17,10 +17,23 @@ function ($geolocation, AppLoading, uiGmapGoogleMapApi, uiGmapIsReady){
       },
       zoom : 13
     };
+
     self.map.center = {
       latitude: self.location.coords.latitude,
       longitude: self.location.coords.longitude
-    }
+    };
+
+    self.icon = 'public/images/pitchup_pin.svg';
+
+    self.markers = [
+      {
+        latitude: self.location.coords.latitude,
+        longitude: self.location.coords.longitude,
+        title: 'your position',
+        id: 1,
+        icon: 'public/images/pitchup_pin_u.svg'
+      }
+    ];
   });
 
   uiGmapIsReady.promise()
