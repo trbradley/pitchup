@@ -1,7 +1,7 @@
 pitchup.controller('AppController',
 ['$rootScope', 'UserAuth',
 function ($rootScope, UserAuth){
-  var self = this
+  var self = this;
   self.currentUser = undefined;
 
   $rootScope.topScope = $rootScope;

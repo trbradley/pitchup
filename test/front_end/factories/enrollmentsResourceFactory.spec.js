@@ -1,10 +1,12 @@
 describe('factory: EnrollmentsResource', function() {
   var enrollmentsResource;
+  var httpBackend;
 
   beforeEach(module('Pitchup'));
 
-  beforeEach(inject(function(EnrollmentsResource) {
+  beforeEach(inject(function(EnrollmentsResource, _$httpBackend_) {
     enrollmentsResource = EnrollmentsResource;
+    $httpBackend = _$httpBackend_;
   }));
 
   beforeEach(inject(function($httpBackend) {
@@ -17,26 +19,9 @@ describe('factory: EnrollmentsResource', function() {
   });
 
   describe('#postEnrollments', function() {
-    it('returns a success message if a user has joined a team', function() {
-      httpBackend
-        .whenPOST("/teams/55/enrollments").respond(function() {
-          return [201, { message: 'Successfully joined team!' }, {}];
-        });
-      enrollmentsResource.postEnrollments('2', 55)
-        .then(function(data) {
-          expect(data.message).toEqual('Successfully joined team!');
-        });
-        httpBackend.flush();
-    });
-  });
-  describe('#postEnrollments error', function() {
-    it('returns an error message if a user could not join a team', function() {
-      httpBackend
-        .whenPOST("/teams/55/enrollments").respond(400);
-      enrollmentsResource.postEnrollments('2', 55)
-        .then(function(data, status) {
-          expect(status).toBe(400);
-        });
+    it('returns an 201 status if a user successfully joins a team', function() {
+      $httpBackend.expectPOST("/teams/55/enrollments").respond(201);
+      enrollmentsResource.postEnrollments('2', 55);
       httpBackend.flush();
     });
   });

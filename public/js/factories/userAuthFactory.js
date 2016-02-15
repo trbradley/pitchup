@@ -17,7 +17,7 @@ function($q, $timeout, $http) {
     });
 
     return deferred.promise;
-  }
+  };
 
   userAuth.login= function(username, password) {
     var deferred = $q.defer();
@@ -36,7 +36,7 @@ function($q, $timeout, $http) {
     });
 
     return  deferred.promise;
-  }
+  };
 
   userAuth.logout = function() {
     var deferred = $q.defer();
@@ -52,7 +52,7 @@ function($q, $timeout, $http) {
     });
 
     return deferred.promise;
-  }
+  };
 
   userAuth.register = function(username, email, password) {
     var deferred = $q.defer();
@@ -72,7 +72,7 @@ function($q, $timeout, $http) {
     });
 
     return deferred.promise;
-  }
+  };
 
   return userAuth;
 }]);

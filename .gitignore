@@ -62,3 +62,4 @@ docs/_build/
 
 *.DS_Store
 flask_session
+server/migrations
