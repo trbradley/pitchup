@@ -11,6 +11,7 @@ class Team(db.Model):
     name = db.Column(db.String())
     capacity = db.Column(db.Integer())
     number_players = db.Column(db.Integer())
+    postcode = db.Column(db.String())
     created_by = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"))
 
     creator = db.relationship("User", foreign_keys=[created_by])
@@ -20,6 +21,7 @@ class Team(db.Model):
         self.name = args['name']
         self.capacity = args['capacity']
         self.number_players = args['number_players']
+        self.postcode = args['postcode']
         self.created_by = current_user().id
         self.validate_capacity_greater_than_players()
         self._update_enrollments(args)

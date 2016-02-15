@@ -8,7 +8,8 @@ team_fields = {
     'id': fields.Integer,
     'name': fields.String,
     'capacity': fields.Integer,
-    'number_players': fields.Integer
+    'number_players': fields.Integer,
+    'postcode': fields.String
 }
 
 user_fields = {
@@ -27,6 +28,7 @@ adv_team_fields = {
     'name': fields.String,
     'capacity': fields.Integer,
     'number_players': fields.Integer,
+    'postcode': fields.String,
     'creator': fields.Nested(user_fields),
     'users': fields.List(fields.Nested(enrollment_fields))
 }
@@ -44,6 +46,7 @@ class TeamsAPI(Resource):
         self.reqparse.add_argument('name')
         self.reqparse.add_argument('capacity')
         self.reqparse.add_argument('number_players')
+        self.reqparse.add_argument('postcode')
         super(TeamsAPI, self).__init__()
 
     def get(self):
