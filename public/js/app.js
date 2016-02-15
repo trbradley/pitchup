@@ -37,6 +37,10 @@ pitchup.config(['$routeProvider', '$locationProvider',
       controller : 'UserController as ctrl',
       templateUrl: 'public/views/partials/users/user.html'
     })
+    .when('/teams/:id/enrollments/new', {
+      controller : 'NewEnrollmentController as ctrl',
+      templateUrl: 'public/views/partials/enrollments/new.html'
+    })
     .otherwise({
       redirectTo: '/'
     })
