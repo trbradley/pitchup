@@ -22,4 +22,8 @@ describe('AppController', function() {
     expect(ctrl.currentUser)
       .toEqual(undefined);
   });
+  // it('returns user status on $routeChangeStart', function() {
+  //   UserAuth.getCurrentUser = 'Htunny';
+  //   expect(ctrl.currentUser).toBe('Htunny');
+  // });
 });
