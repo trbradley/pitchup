@@ -4,7 +4,6 @@ describe('NewEnrollmentController', function() {
   var scope;
   var locationMock;
   var EnrollmentsResourceFactoryMock;
-  var idMock;
   var location;
   var route;
 
