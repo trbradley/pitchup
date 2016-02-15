@@ -7,6 +7,7 @@ from base import BaseTestCase
 from server import app, db, session
 from server.models.enrollment import Enrollment
 from server.models.team import Team
+from server.models.user import User
 from server.helpers.sessions import current_user
 
 
@@ -16,26 +17,39 @@ class TestEnrollmentsAPI(BaseTestCase):
         """POST request to create an enrollment"""
 
         team = Team(dict(
-                id='1',
                 name='test team',
                 capacity='11',
                 number_players='6',
                 pitch_postcode='E1 6LT',
                 time='2019-01-01 13:00',
-                created_by='2'
         ))
 
         db.session.add(team)
         db.session.commit()
 
-        response = self.client.post(url_for(team.id + '/enrollments'),
+        user2 = User(dict(
+                username='test user 2',
+                password='testpassword',
+                email='test2@email.com'
+        ))
+
+        db.session.add(user2)
+        db.session.commit()
+
+        with self.client as c:
+            with c.session_transaction() as sess:
+                sess['user_id'] = user2.id
+
+        print(team.created_by)
+
+        response = self.client.post('/teams/1/enrollments',
                                     data={
-                                        # 'team_id': team.id,
-                                        'number_players': '1'
+                                        'number_players': 1
                                     })
+        print(response.data)
         self.assertEqual(response.status_code, 201)
         self.assertIn(b'Enrolled successfully', response.data)
-        self.assertEqual(db.session.query(Enrollment).count(), 1)
+        self.assertEqual(db.session.query(Enrollment).count(), 2)
 
 if __name__ == '__main__':
     unittest.main()
