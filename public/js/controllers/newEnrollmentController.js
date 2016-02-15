@@ -6,11 +6,11 @@ function(EnrollmentsResource, $location, $route, $routeParams){
 
   self.enroll = function() {
     EnrollmentsResource.postEnrollments(
-      self.number_players,
+      self.numberPlayers,
       self.id
     )
     .then(function() {
-      $location.path('/#/teams/' + self.id);
+      $location.path('/teams/' + self.id);
       $route.reload();
     });
   };
