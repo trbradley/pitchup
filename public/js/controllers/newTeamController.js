@@ -8,7 +8,9 @@ function(TeamsResource, $location, $route) {
       self.teamName,
       self.capacity,
       self.numberPlayers,
-      self.pitchPostcode
+      self.pitchPostcode,
+      self.date,
+      self.time
     )
     .then(function(response) {
       $location.path('/teams');

@@ -10,7 +10,16 @@
     <input type="number" class="form-control" name="numberPlayers" placeholder="How many players for now?" ng-model="ctrl.numberPlayers" autocomplete="off" required>
   </div>
   <div class="form-group">
-    <input type="text" class="form-control" name="pitchPostcode" placeholder="What is your pitch's postcode?" ng-pattern="/^[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}$/i" ng-model="ctrl.pitchPostcode" ng-change="ctrl.formatPostcode()" ng-minlength="5" ng-maxlength="8" autocomplete="off" required>
+    <input type="text" class="form-control" name="pitchPostcode" placeholder="What is your pitch's postcode?"
+      ng-pattern="/^[a-z]{1,2}[0-9][a-z0-9]?\s?[0-9][a-z]{2}$/i" ng-model="ctrl.pitchPostcode" ng-change="ctrl.formatPostcode()" ng-minlength="5" ng-maxlength="8" autocomplete="off" required>
+  </div>
+  <div class="form-group">
+    <input type="date" name="date" ng-model="ctrl.date"
+        placeholder="yyyy-MM-dd" required />
+  </div>
+  <div class="form-group">
+    <input type="time" name="time" ng-model="ctrl.time"
+        placeholder="HH:mm" required />
   </div>
   <div>
     <button type="submit" class="btn btn-default" ng-disabled="disabled">Create</button>
