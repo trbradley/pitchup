@@ -5,7 +5,6 @@ describe('NewSessionController', function() {
   var UserAuthMock;
   var location;
   var route;
-  var idMock;
 
   beforeEach(function() {
     locationMock = jasmine.createSpyObj(
