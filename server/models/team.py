@@ -1,5 +1,5 @@
 from server import db
-from sqlalchemy import event
+from sqlalchemy import event, DateTime
 from sqlalchemy.orm import validates
 from server.helpers.sessions import current_user
 
@@ -12,6 +12,7 @@ class Team(db.Model):
     capacity = db.Column(db.Integer())
     number_players = db.Column(db.Integer())
     postcode = db.Column(db.String())
+    time = db.Column(db.DateTime())
     created_by = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"))
 
     creator = db.relationship("User", foreign_keys=[created_by])
@@ -22,6 +23,7 @@ class Team(db.Model):
         self.capacity = args['capacity']
         self.number_players = args['number_players']
         self.postcode = args['postcode']
+        self.time = args['time']
         self.created_by = current_user().id
         self.validate_capacity_greater_than_players()
         self._update_enrollments(args)
