@@ -11,7 +11,7 @@ class Team(db.Model):
     name = db.Column(db.String())
     capacity = db.Column(db.Integer())
     number_players = db.Column(db.Integer())
-    postcode = db.Column(db.String())
+    pitch_postcode = db.Column(db.String())
     time = db.Column(db.DateTime())
     created_by = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"))
 
@@ -22,7 +22,7 @@ class Team(db.Model):
         self.name = args['name']
         self.capacity = args['capacity']
         self.number_players = args['number_players']
-        self.postcode = args['postcode']
+        self.pitch_postcode = args['pitch_postcode']
         self.time = args['time']
         self.created_by = current_user().id
         self.validate_capacity_greater_than_players()
@@ -56,11 +56,11 @@ class Team(db.Model):
             raise ValueError('Number players must be a number')
         return number_players
 
-    @validates('postcode')
-    def validate_postcode(self, key, postcode):
-        if not postcode:
+    @validates('pitch_postcode')
+    def validate_pitch_postcode(self, key, pitch_postcode):
+        if not pitch_postcode:
             raise ValueError('Postcode cannot be empty')
-        return postcode
+        return pitch_postcode
 
     @validates('time')
     def validate_time(self, key, time):
