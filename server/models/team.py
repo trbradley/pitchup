@@ -11,7 +11,7 @@ class Team(db.Model):
     name = db.Column(db.String())
     capacity = db.Column(db.Integer())
     number_players = db.Column(db.Integer())
-    pitch_postcode = db.Column(db.String())
+    pitch_postcode = db.Column(db.String(8))
     time = db.Column(db.DateTime())
     created_by = db.Column(db.Integer, db.ForeignKey("users.id", ondelete="CASCADE"))
 
