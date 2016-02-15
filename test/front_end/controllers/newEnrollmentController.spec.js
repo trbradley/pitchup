@@ -2,25 +2,35 @@ describe('NewEnrollmentController', function() {
   var response = { message: 'ok' };
   var ctrl;
   var scope;
-  var windowMock;
+  var locationMock;
   var EnrollmentsResourceFactoryMock;
   var idMock;
+  var location;
+  var route;
 
   beforeEach(function() {
-    windowMock = { location : { href: jasmine.createSpy() } };
+    locationMock = jasmine.createSpyObj(
+      'locationMock', ['path']
+    );
+    routeMock = jasmine.createSpyObj(
+      'routeMock', ['reload']
+    );
     EnrollmentsResourceFactoryMock = jasmine.createSpyObj(
       'EnrollmentsResource', ['postEnrollments']
     );
     module('Pitchup', {
       EnrollmentsResource: EnrollmentsResourceFactoryMock,
-      $window: windowMock
+      $location: locationMock,
+      $route: routeMock
     });
   });
 
-  beforeEach(inject(function($controller, $q, $rootScope) {
+  beforeEach(inject(function($controller, $q, $rootScope, $location, $route) {
     EnrollmentsResourceFactoryMock.postEnrollments.and.returnValue($q.when(response));
     ctrl = $controller('NewEnrollmentController');
     scope = $rootScope;
+    location = $location;
+    route = $route;
   }));
 
   describe('#enroll', function() {
@@ -28,7 +38,7 @@ describe('NewEnrollmentController', function() {
       ctrl.id = 55;
       ctrl.enroll();
       scope.$digest();
-      expect(windowMock.location.href).toEqual('/#/teams/55');
+      expect(location.path).toHaveBeenCalledWith('/teams/55');
     });
   });
 });

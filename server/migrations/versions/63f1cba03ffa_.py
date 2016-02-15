@@ -1,13 +1,13 @@
 """empty message
 
-Revision ID: 7cc6e82b4f5a
+Revision ID: 63f1cba03ffa
 Revises: None
-Create Date: 2016-02-13 18:36:36.428664
+Create Date: 2016-02-15 11:10:37.214435
 
 """
 
 # revision identifiers, used by Alembic.
-revision = '7cc6e82b4f5a'
+revision = '63f1cba03ffa'
 down_revision = None
 
 from alembic import op
@@ -29,17 +29,16 @@ def upgrade():
     sa.Column('capacity', sa.Integer(), nullable=True),
     sa.Column('number_players', sa.Integer(), nullable=True),
     sa.Column('created_by', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['created_by'], ['users.id'], ),
+    sa.ForeignKeyConstraint(['created_by'], ['users.id'], ondelete='CASCADE'),
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('enrollments',
-    sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('user_id', sa.Integer(), nullable=False),
     sa.Column('team_id', sa.Integer(), nullable=False),
     sa.Column('number_players', sa.Integer(), nullable=True),
-    sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ),
-    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('id', 'user_id', 'team_id')
+    sa.ForeignKeyConstraint(['team_id'], ['teams.id'], ondelete='CASCADE'),
+    sa.ForeignKeyConstraint(['user_id'], ['users.id'], ondelete='CASCADE'),
+    sa.PrimaryKeyConstraint('user_id', 'team_id')
     )
     ### end Alembic commands ###
 
