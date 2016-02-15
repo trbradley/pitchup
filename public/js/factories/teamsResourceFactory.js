@@ -12,11 +12,13 @@ function($http, $q) {
   };
 
   teamsResource.postTeams = function(
-    teamName, capacity, numberPlayers){
+    teamName, capacity, numberPlayers, pitchPostcode, date, time){
     return $http.post('/teams', {
       name: teamName,
       capacity: capacity,
-      number_players: numberPlayers
+      number_players: numberPlayers,
+      pitch_postcode: pitchPostcode,
+      time: date + time
     });
   };
 
