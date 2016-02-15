@@ -7,7 +7,10 @@ function(TeamsResource, $location, $route) {
     TeamsResource.postTeams(
       self.teamName,
       self.capacity,
-      self.numberPlayers
+      self.numberPlayers,
+      self.pitchPostcode,
+      self.date,
+      self.time
     )
     .then(function(response) {
       $location.path('/teams');
@@ -15,5 +18,12 @@ function(TeamsResource, $location, $route) {
     })
     .catch(function(response) {
     });
+  };
+
+  self.formatPostcode = function() {
+    var postcode = self.pitchPostcode.toUpperCase();
+    index = postcode.length - 3;
+    if (postcode.charAt(index - 1) == " ") return;
+    self.pitchPostcode = postcode.substr(0, index) + ' ' + postcode.substr(index);
   };
 }]);
