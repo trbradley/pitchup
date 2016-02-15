@@ -1,8 +1,8 @@
 from server import db
-from sqlalchemy import event, DateTime
+from sqlalchemy import event
 from sqlalchemy.orm import validates
 from server.helpers.sessions import current_user
-
+from datetime import datetime
 
 class Team(db.Model):
     __tablename__ = 'teams'
@@ -55,6 +55,20 @@ class Team(db.Model):
         if not number_players.isdigit():
             raise ValueError('Number players must be a number')
         return number_players
+
+    @validates('postcode')
+    def validate_postcode(self, key, postcode):
+        if not postcode:
+            raise ValueError('Postcode cannot be empty')
+        return postcode
+
+    @validates('time')
+    def validate_time(self, key, time):
+        try:
+            datetime.strptime(str(time), '%Y-%m-%d %H:%M')
+        except:
+            raise ValueError('Date or Time not valid')
+        return time
 
     def __repr__(self):
         return '<Team {}>'.format(self.id)
