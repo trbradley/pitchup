@@ -1,52 +1,39 @@
 pitchup.controller('GeoLocationController',
-['$geolocation', 'AppLoading', 'uiGmapGoogleMapApi', 'uiGmapIsReady', 'TeamsResource',
-function ($geolocation, AppLoading, uiGmapGoogleMapApi, uiGmapIsReady, TeamsResource){
+['$geolocation', 'AppLoading', 'uiGmapGoogleMapApi', 'uiGmapIsReady', 'TeamsResource', 'GeoLocation',
+function ($geolocation, AppLoading, uiGmapGoogleMapApi, uiGmapIsReady, TeamsResource, GeoLocation){
   var self = this;
 
   $geolocation.getCurrentPosition()
   .then(function(location) {
     AppLoading.loading();
-    self.location = location
+    self.coords = location.coords;
   })
   .then(function(){return uiGmapGoogleMapApi;})
   .then(function(maps){
-    self.map = {
-      center : {
-        latitude: 51.517339,   // default Makers Academy coords
-				longitude: -0.073337
-      },
-      zoom : 12
-    };
 
-    self.map.center = {
-      latitude: self.location.coords.latitude,
-      longitude: self.location.coords.longitude
-    };
+    self.map = GeoLocation.generateMap(self.coords);
 
-    self.markers = [
-      {
-        latitude: self.location.coords.latitude,
-        longitude: self.location.coords.longitude,
-        title: 'Your Position',
-        id: 0,
-        icon: 'public/images/pitchup_pin_u.svg'
-      }
-    ];
+    var my_position_marker = GeoLocation.generateMarker({
+      id: 0,
+      name: 'My Position',
+      coords: self.coords,
+      icon_url: 'public/images/pitchup_pin_u.svg'
+    });
+
+    self.markers = [my_position_marker];
+
     TeamsResource.getTeams()
     .then(function(response) {
       response.data.teams.forEach(function(team) {
-        var geocoder = new maps.Geocoder();
-        geocoder.geocode( {'address': team.pitch_postcode}, function(results, status) {
-          if (status == google.maps.GeocoderStatus.OK) {
-            var coords = results[0].geometry.location;
-            self.markers.push({
-              latitude: coords.lat(),
-              longitude: coords.lng(),
-              title: team.name,
-              id: team.id,
-              icon: 'public/images/pitchup_pin.svg'
-            });
-          }
+        GeoLocation.getCoordsFromPostcode(team.pitch_postcode, maps)
+        .then(function(coords){
+          var team_marker = GeoLocation.generateMarker({
+            id: team.id,
+            name: team.name,
+            coords: coords,
+            icon_url: 'public/images/pitchup_pin.svg'
+          });
+          self.markers.push(team_marker);
         });
       });
     });
