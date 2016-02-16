@@ -40,8 +40,6 @@ class TestEnrollmentsAPI(BaseTestCase):
             with c.session_transaction() as sess:
                 sess['user_id'] = user2.id
 
-        print(team.created_by)
-
         response = self.client.post('/teams/1/enrollments',
                                     data={
                                         'number_players': 1
