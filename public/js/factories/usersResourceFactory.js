@@ -5,7 +5,7 @@ function($http) {
 
   usersResource.getUser = function(id) {
     return $http.get('/users/' + id);
-  }
+  };
 
   return usersResource;
 }]);
