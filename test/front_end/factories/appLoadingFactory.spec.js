@@ -26,8 +26,8 @@ describe('AppLoading', function() {
       expect(scope.status).toEqual('ready');
     });
     it('delays if timeout is "null"', function() {
-      appLoading.ready(null);
       timer = 'setTimeout(ready, delay)';
+      appLoading.ready(null);
       expect(timer).toEqual('setTimeout(ready, delay)');
     });
   });
