@@ -5,7 +5,9 @@
   "main": "app.js",
   "scripts": {
     "start": "python manage.py runserver",
-    "test": "python manage.py cov && npm run update-webdriver && grunt test",
+    "test": "python manage.py cov && python manage.py create_db && npm run update-webdriver && grunt test && python manage.py drop_db",
+    "test-ci": "python manage.py cov && npm run update-webdriver && grunt test",
+    "e2e": "python manage.py create_db && npm run update-webdriver && grunt e2e && python manage.py drop_db",
     "update-webdriver": "./node_modules/protractor/bin/webdriver-manager update --standalone --chrome",
     "postinstall": "bower install"
   },
@@ -24,6 +26,7 @@
     "grunt": "^0.4.5"
   },
   "devDependencies": {
+    "firefox-profile": "^0.3.11",
     "grunt-karma": "^0.12.1",
     "grunt-protractor-runner": "^3.0.0",
     "grunt-protractor-webdriver": "^0.2.5",
