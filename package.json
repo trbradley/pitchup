@@ -24,6 +24,7 @@
     "grunt": "^0.4.5"
   },
   "devDependencies": {
+    "firefox-profile": "^0.3.11",
     "grunt-karma": "^0.12.1",
     "grunt-protractor-runner": "^3.0.0",
     "grunt-protractor-webdriver": "^0.2.5",
