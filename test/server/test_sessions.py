@@ -20,6 +20,22 @@ class TestSessions(BaseTestCase):
         self.assertEqual(response.status_code, 201)
         self.assertIn(b'Logged in successfully', response.data)
 
+    def test_user_in_session(self):
+        """user is in session"""
+        response = self.client.get('sessions')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'user', response.data)
+
+    def test_user_not_in_session(self):
+        """user not in session"""
+        with self.client as c:
+            with c.session_transaction() as sess:
+                sess.clear()
+
+        response = self.client.get('sessions')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'No session set', response.data)
+
     def test_user_invalid_username_login(self):
         """cannot log in with invalid credentials"""
         response = self.client.post(url_for('sessions'))
