@@ -1,21 +1,15 @@
-<div class="col-md-4" ng-controller="NewUserController as ctrl">
-  <h1>Register</h1>
-  <div ng-show="error" class="alert alert-danger">{{ctrl.errorMessage}}</div>
-  <form class="form" ng-submit="ctrl.register()">
-    <div class="form-group">
-      <label>Username</label>
-      <input type="text" class="form-control" name="username" ng-model="ctrl.username" required>
+<form class="form" ng-submit="ctrl.register()">
+  <h2>Register</h2>
+  <div class="form-group">
+    <input type="text" class="form-control" name="username" placeholder="Username" ng-model="ctrl.username" required>
+  </div>
+  <div class="form-group">
+    <input type="text" class="form-control" name="email" placeholder="Email" ng-model="ctrl.email" required>
+  </div>
+  <div class="form-group">
+      <input type="password" class="form-control" name="password" placeholder="Password" ng-model="ctrl.password" required>
     </div>
-    <div class="form-group">
-      <label>Email</label>
-      <input type="text" class="form-control" name="email" ng-model="ctrl.email" required>
-    </div>
-    <div class="form-group">
-      <label>Password</label>
-        <input type="password" class="form-control" name="password" ng-model="ctrl.password" required>
-      </div>
-      <div>
-        <button type="submit" class="btn btn-default" ng-disabled="disabled">Register</button>
-      </div>
-  </form>
-</div>
+  <div>
+    <button type="submit" class="btn btn-default" ng-disabled="disabled">Register</button>
+  </div>
+</form>

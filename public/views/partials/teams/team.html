@@ -1,11 +1,12 @@
-<div ng-controller="TeamController as ctrl">
+<div>
   <header>
     <h1>{{ctrl.team.name}}</h1>
-    <a ng-href="/#/teams/{{ctrl.team.id}}/enrollments/new"> Join team</a>
   </header>
-  <section class="description row">
+  <section class="description">
       <h3>Team info</h3>
-      <p>Capacity: {{ctrl.team.capacity}}</p>
-      <p>Number of players: {{ctrl.team.number_players}}</p>
+      <p>{{ctrl.team.capacity}} players to play</p>
+      <p>{{ctrl.team.number_players}} players ready to play</p>
+      <p>{{ctrl.team.capacity - ctrl.team.number_players}} players need to join</p>
+      <a ng-href="/#/teams/{{ctrl.team.id}}/enrollments/new">Join team</a>
   </section>
 </div>

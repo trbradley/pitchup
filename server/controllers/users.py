@@ -3,10 +3,25 @@ from flask.ext.restful import Resource, fields, marshal, reqparse
 from server import api, db, session
 from server.models.user import User
 
+
+team_fields = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'capacity': fields.Integer,
+    'number_players': fields.Integer
+}
+
+enrollment_fields = {
+    'number_players': fields.Integer,
+    'team': fields.Nested(team_fields)
+}
+
 user_fields = {
     'id': fields.Integer,
     'username': fields.String,
-    'email': fields.String
+    'email': fields.String,
+    'teams_created': fields.List(fields.Nested(team_fields)),
+    'teams': fields.List(fields.Nested(enrollment_fields))
 }
 
 
@@ -33,9 +48,9 @@ class UsersAPI(Resource):
             db.session.add(user)
             db.session.commit()
             session['user_id'] = user.id
-        except ValueError as e:
+        except Exception as e:
             return str(e), 400
-        return 'User created successfully', 201
+        return {'user_id': user.id, 'message': 'User created successfully'}, 201
 
 
 api.add_resource(UserAPI, '/users/<int:id>', endpoint='user')

@@ -1,0 +1,30 @@
+@import url("animate.css");
+@import url("loader.css");
+@import url("navbar.css");
+@import url("map.css");
+
+@media (min-width: 1200px) {
+  .content.container{
+      max-width: 600px;
+  }
+}
+
+body{
+  background: white;
+  color: #263248;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 200;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform:scale(1, 0.8);
+}
+
+.content{
+  margin-top: 30px;
+  background: white;
+  opacity: 0.95;
+}

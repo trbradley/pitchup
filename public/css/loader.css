@@ -1,0 +1,45 @@
+.loader {
+    background: white;
+    height: 100%;
+    width: 100%;
+    position:absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+}
+
+.loader .logo{
+  position: absolute;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 500px;
+  height: 350px;
+}
+
+.loader .image{
+  position: relative;
+  margin: 0;
+  width: 500px;
+  height: 300px;
+}
+
+.loader .spinner{
+  position: relative;
+  margin: 0;
+  width: 500px;
+  height: 50px;
+}
+
+.loader.ng-hide-add {
+    -webkit-animation: fadeOut 0.3s;
+    animation: fadeOut  0.3s;
+    display: block !important;
+}
+
+.loader.ng-hide-remove {
+    -webkit-animation: none;
+    animation: none;
+}

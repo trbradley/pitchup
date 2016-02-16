@@ -1,11 +1,14 @@
 describe('factory: UserAuth', function() {
   var userAuth;
   var success;
+  var $httpBackend;
 
   beforeEach(module('Pitchup'));
 
-  beforeEach(inject(function(UserAuth) {
+  beforeEach(inject(function(UserAuth, _$httpBackend_, _$rootScope_) {
     userAuth = UserAuth;
+    $httpBackend = _$httpBackend_;
+    $rootScope = _$rootScope_;
   }));
 
   beforeEach(inject(function($httpBackend) {
@@ -17,18 +20,15 @@ describe('factory: UserAuth', function() {
     httpBackend.verifyNoOutstandingRequest();
   });
 
-  describe('#isLoggedIn', function() {
-    it('returns false when user is not logged in', function() {
-      userAuth.isLoggedIn(); {
-        expect(userAuth.isLoggedIn()).toBe(false);
-      }
+  describe('#getCurrentUser', function() {
+    it('returns error when getCurrentUser fails', function() {
+      httpBackend.expectGET("/sessions").respond(400);
+      userAuth.getCurrentUser();
+      httpBackend.flush();
     });
-    it('returns true when user is logged in', function() {
-      httpBackend
-        .whenPOST("/sessions").respond("Logged in successfully");
-      userAuth.login().then(function() {
-        expect(userAuth.isLoggedIn()).toBe(true);
-      });
+    it('returns with a 200 when getCurrentUser is successful', function() {
+      httpBackend.expectGET("/sessions").respond(200);
+      userAuth.getCurrentUser();
       httpBackend.flush();
     });
   });
