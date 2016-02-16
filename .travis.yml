@@ -1,5 +1,4 @@
 sudo: required
-dist: trusty
 
 env:
   - APP_SETTINGS=config.TestingConfig DATABASE_URL=postgresql://localhost/pitchup_test
@@ -35,7 +34,7 @@ before_script:
   - "export DISPLAY=:99.0"
   - "sh -e /etc/init.d/xvfb start"
   - npm start &
-  - sleep 5
+  - sleep 10
 
 after_success:
   - coveralls
