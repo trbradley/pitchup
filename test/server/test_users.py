@@ -23,6 +23,18 @@ class TestUser(BaseTestCase):
         self.assertIn(b'User created successfully', response.data)
         self.assertEqual(db.session.query(User).count(), 2)
 
+    def test_get_user(self):
+        """can find a user in database"""
+        response = self.client.get('users/1')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'user', response.data)
+
+    def test_user_not_found(self):
+        """cannot find a user in database"""
+        response = self.client.get('users/3')
+        self.assertEqual(response.status_code, 404)
+        self.assertIn(b'User not found', response.data)
+
     def test_cannot_create_user_without_username(self):
         """do not create a user with invalid username"""
         with self.assertRaises(Exception) as context:
