@@ -26,7 +26,9 @@ function(uiGmapGoogleMapApi, $q) {
       name: args['name'],
       latitude: args['coords'].latitude,
       longitude: args['coords'].longitude,
-      icon: args['icon_url']
+      icon: args['icon_url'],
+      needed: args['needed'],
+      time: args['time']
     };
   }
 

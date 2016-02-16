@@ -13,6 +13,10 @@ function ($geolocation, AppLoading, uiGmapGoogleMapApi, uiGmapIsReady, TeamsReso
 
     self.map = GeoLocation.generateMap(self.coords);
 
+    self.onClick = function(marker, eventName, model) {
+      model.show = !model.show;
+    };
+
     var my_position_marker = GeoLocation.generateMarker({
       id: 0,
       name: 'My Position',
@@ -30,6 +34,8 @@ function ($geolocation, AppLoading, uiGmapGoogleMapApi, uiGmapIsReady, TeamsReso
           var team_marker = GeoLocation.generateMarker({
             id: team.id,
             name: team.name,
+            needed: team.capacity - team.number_players,
+            time: team.time,
             coords: coords,
             icon_url: 'public/images/pitchup_pin.svg'
           });

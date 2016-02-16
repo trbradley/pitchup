@@ -21,11 +21,5 @@ function(TeamsResource, $location, $route, $filter) {
     .catch(function(response) {
     });
   };
-
-  self.formatPostcode = function() {
-    var postcode = self.pitchPostcode.toUpperCase();
-    index = postcode.length - 3;
-    if (postcode.charAt(index - 1) == " ") return;
-    self.pitchPostcode = postcode.substr(0, index) + ' ' + postcode.substr(index);
-  };
+  
 }]);
