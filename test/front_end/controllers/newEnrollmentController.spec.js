@@ -5,7 +5,6 @@ describe('NewEnrollmentController', function() {
   var locationMock;
   var EnrollmentsResourceFactoryMock;
   var location;
-  var route;
 
   beforeEach(function() {
     locationMock = jasmine.createSpyObj(
@@ -24,12 +23,11 @@ describe('NewEnrollmentController', function() {
     });
   });
 
-  beforeEach(inject(function($controller, $q, $rootScope, $location, $route) {
+  beforeEach(inject(function($controller, $q, $rootScope, $location) {
     EnrollmentsResourceFactoryMock.postEnrollments.and.returnValue($q.when(response));
     ctrl = $controller('NewEnrollmentController');
     scope = $rootScope;
     location = $location;
-    route = $route;
   }));
 
   describe('#enroll', function() {
