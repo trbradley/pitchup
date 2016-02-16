@@ -20,6 +20,8 @@ install:
 
 before_script:
   - psql -c 'create database pitchup_test;' -U postgres
+  - python manage.py db init
+  - python manage.py db migrate
   - python manage.py db upgrade
   - sudo apt-get update -q
   - sudo wget -qO- https://deb.nodesource.com/setup_5.x | sudo bash -
