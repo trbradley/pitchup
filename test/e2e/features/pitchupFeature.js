@@ -17,12 +17,23 @@ describe('Pitchup Feature', function() {
 
     // User 1 registering
     addNewUser.registerLink.click();
-    addNewUser.addUser('Mr Example', 'example@example.com', 'password');
+    addNewUser.addUser(
+      'Mr Example',
+      'example@example.com',
+      'password'
+    );
       expect(browser.getCurrentUrl())
         .toContain('/users/1');
 
-    // User1 creates a new team successfully which redirects to the teams list page
-    addNewTeam.addTeam('Example United', '10', '5', 'EC4V 5AJ', '2019-12-01', '13:00');
+    // User1 creates a new team which redirects to the teams list page
+    addNewTeam.addTeam(
+      'Example United',
+      '10',
+      '5',
+      'EC4V 5AJ',
+      '2019-12-01',
+      '13:00'
+    );
       expect(browser.getCurrentUrl())
         .toContain('/teams');
 
@@ -35,7 +46,11 @@ describe('Pitchup Feature', function() {
 
     // User2 registers
     addNewUser.registerLink.click();
-    addNewUser.addUser('Mr Example2', 'example@2example.com', 'password');
+    addNewUser.addUser(
+      'Mr Example2',
+      'example@2example.com',
+      'password'
+    );
       expect(browser.getCurrentUrl())
         .toContain('/users/2');
       expect(addNewUser.loginLink.isDisplayed())
@@ -68,6 +83,5 @@ describe('Pitchup Feature', function() {
 
     // User2 logs out
     Logout.logoutUser();
-
   });
 });
