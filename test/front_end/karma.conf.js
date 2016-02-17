@@ -34,10 +34,10 @@ module.exports = function(config) {
 
     autoWatch: true,
 
-    // browsers: ['Chrome'],
-    browsers: ['PhantomJS'],
+    browsers: ['Chrome'],
+    // browsers: ['PhantomJS'],
 
-    singleRun: true,
+    singleRun: false,
 
     coverageReporter: {
       type: 'lcov',

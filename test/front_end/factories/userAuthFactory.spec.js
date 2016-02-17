@@ -1,6 +1,13 @@
 describe('factory: UserAuth', function() {
   var userAuth;
   var success;
+<<<<<<< HEAD
+
+  beforeEach(module('Pitchup'));
+
+  beforeEach(inject(function(UserAuth) {
+    userAuth = UserAuth;
+=======
   var $httpBackend;
 
   beforeEach(module('Pitchup'));
@@ -9,6 +16,7 @@ describe('factory: UserAuth', function() {
     userAuth = UserAuth;
     $httpBackend = _$httpBackend_;
     $rootScope = _$rootScope_;
+>>>>>>> 5e1f7c87cb8b29bb96b7a13c966c2009c5eb9777
   }));
 
   beforeEach(inject(function($httpBackend) {
@@ -20,6 +28,15 @@ describe('factory: UserAuth', function() {
     httpBackend.verifyNoOutstandingRequest();
   });
 
+<<<<<<< HEAD
+  describe('#register', function() {
+    it('returns success string if registered successfully', function() {
+      httpBackend
+        .whenPOST("/users").respond("User created successfully");
+      userAuth.register('testuser', 'email@email.com', '123456')
+        .then(function(response) {
+          expect(response.data).toEqual("User created successfully");
+=======
   describe('#getCurrentUser', function() {
     it('returns error when getCurrentUser fails', function() {
       httpBackend.expectGET("/sessions").respond(400);
@@ -49,6 +66,7 @@ describe('factory: UserAuth', function() {
       userAuth.register('testuser', 'email@email.com', '123456')
         .then(function(response) {
           expect(response.status).toBe(400);
+>>>>>>> 5e1f7c87cb8b29bb96b7a13c966c2009c5eb9777
         });
       httpBackend.flush();
     });
@@ -57,6 +75,12 @@ describe('factory: UserAuth', function() {
   describe('#login', function() {
     it('returns success string if login is successful', function() {
       httpBackend
+<<<<<<< HEAD
+        .whenPOST("/sessions").respond("Logged in successfully");
+      userAuth.login('testuser', '123456')
+        .then(function(response) {
+          expect(response.data).toEqual("Logged in successfully");
+=======
         .whenPOST("/sessions").respond(200);
       userAuth.login('testuser', '123456')
         .then(function(response) {
@@ -70,6 +94,7 @@ describe('factory: UserAuth', function() {
       userAuth.login('testuser', '123456')
         .then(function(response) {
           expect(response.status).toBe(400);
+>>>>>>> 5e1f7c87cb8b29bb96b7a13c966c2009c5eb9777
         });
       httpBackend.flush();
     });
@@ -79,6 +104,11 @@ describe('factory: UserAuth', function() {
     it('returns success string if logout is successful', function() {
       httpBackend
         .expect('DELETE', "/sessions").respond(200);
+<<<<<<< HEAD
+      userAuth.logout()
+        .then(function(response) {
+        });
+=======
       userAuth.logout();
       httpBackend.flush();
     });
@@ -88,10 +118,14 @@ describe('factory: UserAuth', function() {
       httpBackend
         .expect('DELETE', "/sessions").respond(400);
       userAuth.logout();
+>>>>>>> 5e1f7c87cb8b29bb96b7a13c966c2009c5eb9777
       httpBackend.flush();
     });
   });
 
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> 5e1f7c87cb8b29bb96b7a13c966c2009c5eb9777
 });
