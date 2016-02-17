@@ -2,12 +2,10 @@ describe('Teams Feature', function() {
 
   it('allows a user to create a team, view a list of teams and then view a specific team', function() {
 
-    browser.ignoreSynchronization = true;
     browser.get('http://localhost:5000');
 
     var registerLink = element(by.css('a[href*="/#/users/new"]'));
 
-    browser.ignoreSynchronization = false;
     registerLink.click();
 
     expect(browser.getCurrentUrl()).toContain('/users/new');
@@ -47,10 +45,16 @@ describe('Teams Feature', function() {
     timeInput.sendKeys('13:00');
     newTeamForm.submit();
 
-    expect(browser.getCurrentUrl()).toContain('/teams/1');
+    expect(browser.getCurrentUrl()).toContain('/teams');
 
+    var teamsList = element.all(by.repeater('team in ctrl.teams'));
 
+    expect(teamsList.count()).toEqual(1);
 
+    dropdownMenu = element(by.css('a[class*="dropdown-toggle"]'));
+    dropdownMenu.click();
+    logoutLink = element(by.css('button[class*="btn btn-link btn-logout"]'));
+    logoutLink.click();
 
     // browser.get('http://localhost:5000/#/teams');
     //
