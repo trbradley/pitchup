@@ -2,6 +2,7 @@ pitchup.controller('NewTeamController',
 ['TeamsResource', '$location', '$route', '$filter',
 function(TeamsResource, $location, $route, $filter) {
   var self = this;
+  self.viewClass = 'new-team';
 
   self.createNewTeam = function() {
     date_formatted = $filter('date')(self.date, 'yyyy-MM-dd');
@@ -21,5 +22,5 @@ function(TeamsResource, $location, $route, $filter) {
     .catch(function(response) {
     });
   };
-  
+
 }]);

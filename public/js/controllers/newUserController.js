@@ -2,6 +2,7 @@ pitchup.controller('NewUserController',
 ['UserAuth', '$location', '$route',
 function (UserAuth, $location, $route) {
   var self = this;
+  self.viewClass = 'new-user';
 
   self.register = function() {
     UserAuth.register(

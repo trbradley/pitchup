@@ -3,10 +3,9 @@
 @import url("navbar.css");
 @import url("map.css");
 
-@media (min-width: 1200px) {
-  .content.container{
-      max-width: 600px;
-  }
+@media (min-width: 960px) {
+  .content.container{ max-width: 600px; }
+  .content.container.new-session{ max-width: 300px; }
 }
 
 body{
@@ -35,15 +34,5 @@ h1, h2, h3, h4, h5, h6{
   display: none;
 }
 
-.ng-enter       { z-index: 8888; }
-.ng-leave       { z-index: 9999; }
-
-.content.ng-enter         { animation: slideInRight 0.5s; -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
-.content.ng-leave         { animation: slideOutLeft 0.5s; }
-.content.ng-enter-prepare  {opacity: 0}
-
-/*.ng-leave{
-  -webkit-animation: fadeOut 0.3s;
-  animation: fadeOut  0.3s;
-  display: block !important;
-}*/
+.ng-enter { animation: slideInDown 0.4s both ease-in; -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
+.ng-leave { animation: slideOutDown 0.4s both ease-in; }
