@@ -1,7 +1,5 @@
 exports.config = {
   seleniumAddress: 'http://localhost:4444/wd/hub',
-  multiCapabilities: [{'browserName': 'firefox' }],
-  specs: ['features/*Feature.js'],
   getMultiCapabilities: function() {
       return q.all([
           makeFirefoxProfile(
