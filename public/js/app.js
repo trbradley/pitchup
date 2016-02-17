@@ -55,3 +55,7 @@ pitchup.config(function(uiGmapGoogleMapApiProvider) {
 		libraries: 'weather,geometry,visualization'
 	});
 });
+
+pitchup.run(function($animate) {
+  $animate.enabled(true);
+});

@@ -60,7 +60,6 @@ class TeamsAPI(Resource):
         if not current_user():
             return 'You need to be logged in', 403
         args = self.reqparse.parse_args()
-        print(args)
         try:
             team = Team(args)
             db.session.add(team)

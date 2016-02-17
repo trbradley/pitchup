@@ -47,6 +47,7 @@
     <script src="public/js/factories/userAuthFactory.js"></script>
     <script src="public/js/factories/usersResourceFactory.js"></script>
     <script src="public/js/factories/appLoadingFactory.js"></script>
+    <script src="public/js/factories/geoLocationFactory.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -59,10 +60,7 @@
   <body>
     <div ng-hide="status=='ready'" class="loader" ng-include src="'public/views/partials/loader.html'"></div>
     <nav class="navbar" ng-controller="NavbarController as navCtrl" ng-include src="'public/views/partials/navbar.html'"></nav>
-    <div class="map" ng-controller="GeoLocationController as mapCtrl">
-      <ui-gmap-google-map center="mapCtrl.map.center" zoom="mapCtrl.map.zoom" draggable="true">
-      </ui-gmap-google-map>
-    </div>
+    <div class="map" ng-controller="GeoLocationController as mapCtrl" ng-include src="'public/views/partials/map.html'"></div>
     <div ng-view class="container content"></div>
   </body>
 </html>

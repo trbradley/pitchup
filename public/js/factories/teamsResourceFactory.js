@@ -18,7 +18,7 @@ function($http, $q) {
       capacity: capacity,
       number_players: numberPlayers,
       pitch_postcode: pitchPostcode,
-      time: date + time
+      time: date + ' ' + time
     });
   };
 
