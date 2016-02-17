@@ -8,7 +8,7 @@ function($rootScope) {
     clearTimeout(timer);
     $rootScope.status = 'loading';
     if(!$rootScope.$$phase) $rootScope.$apply();
-  }
+  };
   appLoading.ready = function(delay) {
     function ready() {
       $rootScope.status = 'ready';
@@ -22,7 +22,7 @@ function($rootScope) {
     else {
       ready();
     }
-  }
+  };
 
   return appLoading;
 }]);

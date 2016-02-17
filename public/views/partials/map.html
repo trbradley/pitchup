@@ -1,0 +1,12 @@
+<ui-gmap-google-map center="mapCtrl.map.center" zoom="mapCtrl.map.zoom" draggable="true">
+  <ui-gmap-markers models="mapCtrl.markers" coords="'self'" icon="'icon'" click="mapCtrl.onClick">
+    <ui-gmap-windows show="show">
+      <div ng-non-bindable>
+        <b>{{name}}</b><br>
+        {{time}}<br>
+        {{needed}} players needed<br>
+        <a href="/#/teams/{{id}}">Show More...</a>
+      </div>
+    </ui-gmap-windows>
+  </ui-gmap-markers>
+</ui-gmap-google-map>

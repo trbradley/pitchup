@@ -16,6 +16,7 @@ body{
   font-weight: 200;
 }
 
+
 h1, h2, h3, h4, h5, h6{
   font-weight: 100;
   text-transform: uppercase;
@@ -24,7 +25,25 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .content{
-  margin-top: 30px;
+  margin-top: 40px;
   background: white;
   opacity: 0.95;
+  padding: 20px 50px;
 }
+
+.content:empty{
+  display: none;
+}
+
+.ng-enter       { z-index: 8888; }
+.ng-leave       { z-index: 9999; }
+
+.content.ng-enter         { animation: slideInRight 0.5s; -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
+.content.ng-leave         { animation: slideOutLeft 0.5s; }
+.content.ng-enter-prepare  {opacity: 0}
+
+/*.ng-leave{
+  -webkit-animation: fadeOut 0.3s;
+  animation: fadeOut  0.3s;
+  display: block !important;
+}*/
