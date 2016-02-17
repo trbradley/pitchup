@@ -1,7 +1,8 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="Pitchup">
+<html lang="en" ng-app="Pitchup" ng-controller="AppController as appCtrl">
   <head>
     <meta charset="utf-8">
+    <base href="/">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -9,10 +10,10 @@
     <meta name="author" content="">
     <link rel="icon" href="../../favicon.ico"> -->
 
-    <title>Pitchup</title>
+    <title>PitchUp</title>
 
     <link rel="stylesheet" href="public/libs/bootstrap/dist/css/bootstrap.min.css">
-    <!-- <link rel="stylesheet" href="../css/style.css"> -->
+    <link rel="stylesheet" href="public/css/style.css">
 
     <script src="public/libs/jquery/dist/jquery.min.js"></script>
     <script src="public/libs/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -20,12 +21,33 @@
     <script src="public/libs/angular-resource/angular-resource.min.js"></script>
     <script src="public/libs/angular-route/angular-route.min.js"></script>
     <script src="public/libs/angular-mocks/angular-mocks.js"></script>
-    <script src="public/js/app.js"></script>
-    <script src="public/js/controllers/teamsController.js"></script>
-    <script src="public/js/controllers/newTeamController.js"></script>
-    <script src="public/js/controllers/teamController.js"></script>
-    <script src="public/js/factories/teamsResourceFactory.js"></script>
+    <script src="public/libs/angular-loading-bar/build/loading-bar.min.js"></script>
+    <script src="public/libs/angular-animate/angular-animate.min.js"></script>
+    <script src="public/libs/lodash/dist/lodash.min.js"></script>
+    <script src="public/libs/angular-simple-logger/dist/angular-simple-logger.light.min.js"></script>
+    <script src="public/libs/angular-google-maps/dist/angular-google-maps.min.js"></script>
+    <script src="public/libs/ngGeolocation/ngGeolocation.min.js"></script>
 
+    <script src="public/js/app.js"></script>
+    <script src="public/js/controllers/appController.js"></script>
+    <script src="public/js/controllers/geoLocationController.js"></script>
+
+    <script src="public/js/controllers/newTeamController.js"></script>
+    <script src="public/js/controllers/teamsController.js"></script>
+    <script src="public/js/controllers/teamController.js"></script>
+    <script src="public/js/controllers/newEnrollmentController.js"></script>
+
+    <script src="public/js/controllers/newSessionController.js"></script>
+    <script src="public/js/controllers/newUserController.js"></script>
+    <script src="public/js/controllers/userController.js"></script>
+    <script src="public/js/controllers/navbarController.js"></script>
+
+    <script src="public/js/factories/teamsResourceFactory.js"></script>
+    <script src="public/js/factories/enrollmentsResourceFactory.js"></script>
+    <script src="public/js/factories/userAuthFactory.js"></script>
+    <script src="public/js/factories/usersResourceFactory.js"></script>
+    <script src="public/js/factories/appLoadingFactory.js"></script>
+    <script src="public/js/factories/geoLocationFactory.js"></script>
 
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -36,6 +58,9 @@
   </head>
 
   <body>
-    <div ng-view class="content container"></div>
+    <div ng-hide="status=='ready'" class="loader" ng-include src="'public/views/partials/loader.html'"></div>
+    <nav class="navbar" ng-controller="NavbarController as navCtrl" ng-include src="'public/views/partials/navbar.html'"></nav>
+    <div class="map" ng-controller="GeoLocationController as mapCtrl" ng-include src="'public/views/partials/map.html'"></div>
+    <div ng-view class="container content"></div>
   </body>
 </html>

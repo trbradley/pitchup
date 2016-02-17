@@ -1,7 +1,7 @@
 # PitchUp [![Build Status](https://travis-ci.org/trbradley/pitchup.svg?branch=master)](https://travis-ci.org/trbradley/pitchup) [![Coverage Status](https://coveralls.io/repos/github/trbradley/pitchup/badge.svg?branch=master)](https://coveralls.io/github/trbradley/pitchup?branch=master)
 
 ### Mission Statement
-Connect people through sport.
+“Our mission is to provide sports enthusiasts with the platform to connect to sports teams in order to play at a time and a place that suits them. Our app/website will allow players to take part in their favourite hobby, make exercise more fun and competitive, and furthermore help inspire our users find a new passion for sport".
 
 ### User Stories
 ```

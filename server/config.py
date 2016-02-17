@@ -3,7 +3,8 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig(object):
-    SECRET_KEY = ''
+    SECRET_KEY = 'dev'
+    SESSION_TYPE = 'filesystem'
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     WTF_CSRF_ENABLED = True
