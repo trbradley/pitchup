@@ -2,7 +2,6 @@ describe('Users Feature', function() {
 
   it("allows a user to register, logout, login and view their profile", function() {
     browser.ignoreSynchronization = true;
-    browser.get('http://localhost:5000');
 
     var registerLink = element(by.css('a[href*="/#/users/new"]'));
 
@@ -23,7 +22,7 @@ describe('Users Feature', function() {
     passwordInput.sendKeys('password');
     newUserForm.submit();
 
-    expect(browser.getCurrentUrl()).toContain('/users/1');
+    expect(browser.getCurrentUrl()).toContain('/users/4');
     expect(registerLink.isDisplayed()).toBeFalsy();
 
     var dropdownMenu = element(by.css('a[class*="dropdown-toggle"]'));
@@ -33,7 +32,7 @@ describe('Users Feature', function() {
 
     expect(logoutLink.isDisplayed()).toBeFalsy();
 
-    var loginLink = element(by.css('a[href*="/sessions/new"]'))
+    var loginLink = element(by.css('a[href*="/sessions/new"]'));
 
     loginLink.click();
 
@@ -43,7 +42,7 @@ describe('Users Feature', function() {
     passwordInput.sendKeys('password');
     loginForm.submit();
 
-    expect(browser.getCurrentUrl()).toContain('/users/1');
+    expect(browser.getCurrentUrl()).toContain('/users/4');
     expect(loginLink.isDisplayed()).toBeFalsy();
 
     var userDetails = element(by.css('section[class*="description"]'));
