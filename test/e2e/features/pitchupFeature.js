@@ -97,5 +97,7 @@ describe('Pitchup Feature', function() {
           .toBeFalsy();
         expect(Login.userDetails.getText())
           .toContain('example@example.com');
+
+      Logout.logoutUser();    
   });
 });
