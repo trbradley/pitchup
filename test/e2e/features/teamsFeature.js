@@ -20,12 +20,12 @@ describe('Teams Feature', function() {
     passwordInput.sendKeys('password');
     newUserForm.submit();
 
-    expect(browser.getCurrentUrl()).toContain('/users/1');
+    expect(browser.getCurrentUrl()).toContain('/users/3');
 
     var dropdownMenu = element(by.css('a[class*="dropdown-toggle"]'));
     dropdownMenu.click();
-    var logoutLink = element(by.css('a[href*="/#/teams/new"]'));
-    logoutLink.click();
+    var addTeamLink = element(by.css('a[href*="/#/teams/new"]'));
+    addTeamLink.click();
 
     expect(browser.getCurrentUrl()).toContain('/teams/new');
 
@@ -49,50 +49,12 @@ describe('Teams Feature', function() {
 
     var teamsList = element.all(by.repeater('team in ctrl.teams'));
 
-    expect(teamsList.count()).toEqual(1);
+    expect(teamsList.count()).toEqual(2);
 
     dropdownMenu = element(by.css('a[class*="dropdown-toggle"]'));
     dropdownMenu.click();
     logoutLink = element(by.css('button[class*="btn btn-link btn-logout"]'));
     logoutLink.click();
 
-    // browser.get('http://localhost:5000/#/teams');
-    //
-    // var teamsList = element.all(by.repeater('team in ctrl.teams'));
-    // var firstTeamName = teamsList.get(0).element(by.css('a'));
-    //
-    // expect(teamsList.count()).toEqual(1);
-
-//     var header = element(by.css('header'));
-//     var createTeamLink = header.element(by.css('a[href*="#/teams/new"]'));
-//     createTeamLink.click();
-//
-//     expect(browser.getCurrentUrl()).toContain('#/teams/new');
-//
-//     var teamNameInput = element(by.css('input[name="teamName"]'));
-//     var numberOfPlayersInput = element(by.css('input[name="numberOfPlayers"]'));
-//     var currentPlayersInput = element(by.css('input[name="currentNumber"]'));
-//     var newTeamForm = element(by.css('form'));
-//
-//     teamNameInput.sendKeys('Manchester United');
-//     numberOfPlayersInput.sendKeys('5');
-//     currentPlayersInput.sendKeys('2');
-//     newTeamForm.submit();
-//
-//     expect(teamsList.count()).toEqual(1);
-//     expect(browser.getCurrentUrl()).toContain('#/teams');
-//     expect(firstTeamName.getText()).toEqual('Manchester United');
-//
-//     var viewTeamLink = teamsList.get(0).element(by.css('a[href*="#/teams/"]'));
-//     viewTeamLink.click();
-//
-//     var teamName = element(by.binding('team.name'));
-//     var capacity = element(by.binding('team.capacity'));
-//     var currentPlayers = element(by.binding('team.number_players'));
-//
-//     expect(browser.getCurrentUrl()).toContain('#/teams/');
-//     expect(teamName.getText()).toEqual('Manchester United');
-//     expect(capacity.getText()).toContain('5');
-//     expect(currentPlayers.getText()).toContain('2');
   });
 });

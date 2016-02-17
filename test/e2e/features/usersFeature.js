@@ -22,7 +22,7 @@ describe('Users Feature', function() {
     passwordInput.sendKeys('password');
     newUserForm.submit();
 
-    expect(browser.getCurrentUrl()).toContain('/users/2');
+    expect(browser.getCurrentUrl()).toContain('/users/4');
     expect(registerLink.isDisplayed()).toBeFalsy();
 
     var dropdownMenu = element(by.css('a[class*="dropdown-toggle"]'));
@@ -42,7 +42,7 @@ describe('Users Feature', function() {
     passwordInput.sendKeys('password');
     loginForm.submit();
 
-    expect(browser.getCurrentUrl()).toContain('/users/2');
+    expect(browser.getCurrentUrl()).toContain('/users/4');
     expect(loginLink.isDisplayed()).toBeFalsy();
 
     var userDetails = element(by.css('section[class*="description"]'));
