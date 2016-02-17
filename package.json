@@ -6,7 +6,7 @@
   "scripts": {
     "start": "python manage.py runserver",
     "test": "python manage.py cov && python manage.py create_db && npm run update-webdriver && grunt test && python manage.py drop_db",
-    "test-ci": "python manage.py cov && npm run update-webdriver && grunt test",
+    "test-ci": "python manage.py cov && python manage.py create_db && npm run update-webdriver && grunt test",
     "e2e": "python manage.py create_db && npm run update-webdriver && grunt e2e && python manage.py drop_db",
     "update-webdriver": "./node_modules/protractor/bin/webdriver-manager update --standalone --chrome",
     "postinstall": "bower install"
@@ -43,6 +43,7 @@
     "phantomjs-prebuilt": "^2.1.3",
     "protractor": "^3.0.0",
     "protractor-http-mock": "^0.2.1",
+    "q": "^1.4.1",
     "webdriver-manager": "^8.0.0"
   }
 }
