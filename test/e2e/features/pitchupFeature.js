@@ -1,12 +1,14 @@
 describe('Pitchup Feature', function() {
   var newUser = require("../helpers/users/new.helper.js"),
       viewUser = require("../helpers/users/view.helper.js"),
+      login = require("../helpers/users/login.helper.js"),
       logout = require("../helpers/users/logout.helper.js"),
       newTeam = require("../helpers/teams/new.helper.js"),
       viewTeams = require("../helpers/teams/view.helper.js"),
       enroll = require("../helpers/enrollments/new.helper.js"),
       addNewUser = new newUser,
       viewUserProfile = new viewUser,
+      Login = new login,
       Logout = new logout,
       addNewTeam = new newTeam,
       viewTeamsList = new viewTeams,
@@ -83,5 +85,17 @@ describe('Pitchup Feature', function() {
 
     // User2 logs out
     Logout.logoutUser();
+
+    // User1 logs back in
+      Login.loginUser(
+        'Mr Example',
+        'password'
+      );
+        expect(browser.getCurrentUrl())
+          .toContain('/users/1');
+        expect(Login.loginLink.isDisplayed())
+          .toBeFalsy();
+        expect(Login.userDetails.getText())
+          .toContain('example@example.com');
   });
 });
