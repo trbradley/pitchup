@@ -1,11 +1,11 @@
-pitchup.factory('UsersResource', ['$http', function($http) {
-  return {
-    getData: function(id) {
-      id = typeof id !== 'undefined' ? id : '';
-      return $http({
-        url: 'users/' + id,
-        method: 'GET'
-      });
-    }
+pitchup.factory('UsersResource',
+['$http',
+function($http) {
+  var usersResource = {};
+
+  usersResource.getUser = function(id) {
+    return $http.get('/users/' + id);
   };
+
+  return usersResource;
 }]);

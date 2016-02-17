@@ -8,6 +8,12 @@ module.exports = function(config) {
       '../public/libs/angular-route/angular-route.js',
       '../public/libs/angular-resource/angular-resource.js',
       '../public/libs/angular-mocks/angular-mocks.js',
+      '../public/libs/angular-loading-bar/build/loading-bar.min.js',
+      '../public/libs/angular-animate/angular-animate.min.js',
+      '../public/libs/lodash/dist/lodash.min.js',
+      '../public/libs/angular-simple-logger/dist/angular-simple-logger.light.min.js',
+      '../public/libs/angular-google-maps/dist/angular-google-maps.min.js',
+      '../public/libs/ngGeolocation/ngGeolocation.min.js',
       '../public/js/**/*.js',
       './front_end/**/*.spec.js'
     ],

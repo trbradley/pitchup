@@ -1,30 +1,16 @@
 describe('factory: TeamsResource', function() {
   var teamsResource;
+  var httpBackend;
 
   beforeEach(module('Pitchup'));
 
-  beforeEach(inject(function(TeamsResource) {
+  beforeEach(inject(function(TeamsResource, _$httpBackend_) {
     teamsResource = TeamsResource;
+    $httpBackend = _$httpBackend_;
   }));
 
   beforeEach(inject(function($httpBackend) {
     httpBackend = $httpBackend;
-    httpBackend
-      .whenGET("/teams/2").respond(
-        {teamName: 'Arsenal', capacity: '5', numberPlayers: '4'}
-      );
-    httpBackend
-      .whenGET("/teams").respond(
-        [{teamName: 'Arsenal', capacity: '5', numberPlayers: '4'}]
-      );
-    httpBackend
-      .whenPOST("/teams").respond(function() {
-        return [200, { message: 'Team created!' }, {}];
-      });
-    httpBackend
-      .whenPOST("/teams").respond(function() {
-        return [300, { errorMessage: 'Error - Team was not created' }, {}];
-      });
   }));
 
   afterEach(function() {
@@ -33,31 +19,32 @@ describe('factory: TeamsResource', function() {
   });
 
   describe('#getTeam', function() {
-    it('returns team hash', function() {
-      teamsResource.getTeam(2)
-        .then(function(response) {
-          expect(response.data).toEqual({teamName: 'Arsenal', capacity: '5', numberPlayers: '4'});
-        });
+    it('returns an 200 status if a user successfully gets a team profile', function() {
+      $httpBackend.expectGET("/teams/55").respond(200);
+      teamsResource.getTeam(55);
       httpBackend.flush();
     });
   });
 
   describe('#getTeams', function() {
-    it('returns teams array', function() {
-      teamsResource.getTeams()
-        .then(function(response) {
-          expect(response.data[0]).toEqual({teamName: 'Arsenal', capacity: '5', numberPlayers: '4'});
-        });
+    it('returns an 200 status if a user successfully gets a list of teams', function() {
+      $httpBackend.expectGET("/teams").respond(200);
+      teamsResource.getTeams();
       httpBackend.flush();
     });
   });
 
   describe('#postTeams', function() {
-    it('returns a success message if a team has been created', function() {
-      teamsResource.postTeams('Dortmund', '10', '2')
-        .then(function(data) {
-          expect(data.message).toEqual('Team created!');
-        });
+    it('has TeamsResource post a new team', function() {
+      $httpBackend.expectPOST("/teams").respond(201);
+      teamsResource.postTeams('Arsenal', '5', '4');
+      httpBackend.flush();
+    });
+  });
+  describe('#postTeams error', function() {
+    it('has TeamsResource throw error if unsuccessful postTeams', function() {
+      $httpBackend.expectPOST("/teams").respond(400);
+      teamsResource.postTeams('Arsenal', '5', '4');
       httpBackend.flush();
     });
   });
