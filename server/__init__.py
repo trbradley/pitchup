@@ -37,6 +37,7 @@ import server.controllers.sessions
 import server.controllers.enrollments
 
 
+
 @app.route('/')
 def serve_client():
     angular = os.path.join(
