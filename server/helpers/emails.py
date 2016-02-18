@@ -24,11 +24,11 @@ def new_enrollment_email(team_id):
     creator_email = creator.email
     # user_email = creator_email(team_id)
     msg = Message(
-                'Hello',
+                'PitchUp - New Enrollment',
                 sender='pitchuphelp@gmail.com',
                 recipients=[creator_email])
-    msg.body = "This is the email body"
-    msg.html = "<b>This is the email body</b>"
+    msg.body = "Someone has joined your team!"
+    msg.html = "<b>Someone has joined your team!</b>"
     mail.send(msg)
     return "Sent"
 #
