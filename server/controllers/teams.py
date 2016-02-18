@@ -54,6 +54,11 @@ class TeamsAPI(Resource):
 
     def get(self):
         teams = Team.query.all()
+        # teams.filter("number_players <=", capacity)
+        # teams.filter("SELECT CASE " + "WHERE number_players < capacity").all
+        # teams = db.teams.query.filter(db.teams.number_players < db.teams.capacity).all()
+        # teams = db.session.query(Team).filter(Team.number_players < Team.capacity).all
+        # print(teams)
         return {'teams': [marshal(team, team_fields) for team in teams]}
 
     def post(self):
