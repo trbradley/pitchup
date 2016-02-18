@@ -147,5 +147,60 @@ class TestTeamsAPI(BaseTestCase):
             self.assertTrue('Time must be a valid format' in context.exception)
             self.assertEqual(db.session.query(Team).count(), 0)
 
+    def test_complete_teams_not_returned(self):
+        """GET teams doesn't include completed teams"""
+        args1 = {
+            'name': 'incomplete team',
+            'capacity': '11',
+            'number_players': '6',
+            'pitch_postcode': 'E1 6LT',
+            'time': '2019-01-01 13:00'
+        }
+        team1 = Team(args1)
+        db.session.add(team1)
+        db.session.commit()
+        args2 = {
+            'name': 'finished team',
+            'capacity': '11',
+            'number_players': '11',
+            'pitch_postcode': 'E2 6LT',
+            'time': '2019-01-01 13:00'
+        }
+        team2 = Team(args2)
+        db.session.add(team2)
+        db.session.commit()
+        response = self.client.get('/teams')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'incomplete team', response.data)
+        self.assertNotIn(b'finished team', response.data)
+
+    def test_old_teams_not_returned(self):
+        """GET teams doesn't include old teams"""
+        args1 = {
+            'name': 'new team',
+            'capacity': '11',
+            'number_players': '6',
+            'pitch_postcode': 'E1 6LT',
+            'time': '2019-01-01 13:00'
+        }
+        team1 = Team(args1)
+        db.session.add(team1)
+        db.session.commit()
+        args2 = {
+            'name': 'old team',
+            'capacity': '11',
+            'number_players': '6',
+            'pitch_postcode': 'E2 6LT',
+            'time': '2010-01-01 13:00'
+        }
+        team2 = Team(args2)
+        db.session.add(team2)
+        db.session.commit()
+        response = self.client.get('/teams')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'new team', response.data)
+        self.assertNotIn(b'old team', response.data)
+
+
 if __name__ == '__main__':
     unittest.main()

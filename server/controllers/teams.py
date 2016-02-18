@@ -3,6 +3,7 @@ from flask.ext.restful import Resource, fields, marshal, reqparse
 from server import api, db, session
 from server.models.team import Team
 from server.helpers.sessions import current_user
+from datetime import datetime
 
 team_fields = {
     'id': fields.Integer,
@@ -53,7 +54,7 @@ class TeamsAPI(Resource):
         super(TeamsAPI, self).__init__()
 
     def get(self):
-        teams = Team.query.all()
+        teams = Team.query.filter(Team.number_players < Team.capacity, Team.time > datetime.now()).order_by(Team.time)
         return {'teams': [marshal(team, team_fields) for team in teams]}
 
     def post(self):
