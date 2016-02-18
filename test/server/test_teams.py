@@ -147,8 +147,8 @@ class TestTeamsAPI(BaseTestCase):
             self.assertTrue('Time must be a valid format' in context.exception)
             self.assertEqual(db.session.query(Team).count(), 0)
 
-    def test_get_list_teams(self):
-        """GET request to view list of teams"""
+    def test_complete_teams_not_returned(self):
+        """GET teams doesn't include completed teams"""
         args = {
             'name': 'incomplete team',
             'capacity': '11',
