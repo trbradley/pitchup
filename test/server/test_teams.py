@@ -160,7 +160,7 @@ class TestTeamsAPI(BaseTestCase):
         db.session.add(team1)
         db.session.commit()
         args = {
-            'name': 'complete team',
+            'name': 'finished team',
             'capacity': '11',
             'number_players': '11',
             'pitch_postcode': 'E2 6LT',
@@ -172,7 +172,7 @@ class TestTeamsAPI(BaseTestCase):
         response = self.client.get('/teams')
         self.assertEqual(response.status_code, 200)
         self.assertIn(b'incomplete team', response.data)
-        self.assertNotIn(b'complete team', response.data)
+        self.assertNotIn(b'finished team', response.data)
 
 
 if __name__ == '__main__':
