@@ -147,5 +147,33 @@ class TestTeamsAPI(BaseTestCase):
             self.assertTrue('Time must be a valid format' in context.exception)
             self.assertEqual(db.session.query(Team).count(), 0)
 
+    def test_get_list_teams(self):
+        """GET request to view list of teams"""
+        args = {
+            'name': 'incomplete team',
+            'capacity': '11',
+            'number_players': '6',
+            'pitch_postcode': 'E1 6LT',
+            'time': '2019-01-01 13:00'
+        }
+        team1 = Team(args)
+        db.session.add(team1)
+        db.session.commit()
+        args = {
+            'name': 'complete team',
+            'capacity': '11',
+            'number_players': '11',
+            'pitch_postcode': 'E2 6LT',
+            'time': '2019-01-01 13:00'
+        }
+        team2 = Team(args)
+        db.session.add(team2)
+        db.session.commit()
+        response = self.client.get('/teams')
+        self.assertEqual(response.status_code, 200)
+        self.assertIn(b'incomplete team', response.data)
+        self.assertNotIn(b'complete team', response.data)
+
+
 if __name__ == '__main__':
     unittest.main()
