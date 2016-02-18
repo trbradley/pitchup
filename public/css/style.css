@@ -7,7 +7,7 @@
 @media (min-width: 960px) {
   .content.container.user,
   .content.container.team,
-  .content.container.teams{ 
+  .content.container.teams{
     max-width: 600px;
   }
   .content.container.new-session,
