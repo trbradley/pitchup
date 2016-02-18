@@ -1,11 +1,10 @@
 <div>
   <header>
     <h1>Teams</h1>
-    <a href="/#/teams/new" title="Add a team"> Add a team</a>
   </header>
   <ul class="items-result list-group" ng-show="ctrl.teams.length">
     <li class="list-group-item" ng-repeat="team in ctrl.teams">
-      <a ng-href="/#/teams/{{team.id}}">{{team.name}}</a>
+      <a ng-href="/#/teams/{{team.id}}">{{team.name}}</a><span class="pull-right" style="font-size: 12px;"><span style="width: 180px; display:inline-block"><i class="glyphicon glyphicon-time"></i> {{ team.time | date: 'd MMM - h:mm a' }}</span> <span style="width: 60px; display:inline-block"><i class="glyphicon glyphicon-bullhorn"></i> {{team.capacity - team.number_players}}</span></span>
     </li>
   </ul>
 </div>

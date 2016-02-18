@@ -1,24 +1,21 @@
 <div class="container">
-  <div class="navbar-header">
-    <button type="button" class="navbar-toggle collapsed" ng-init="navCollapsed = true" ng-click="navCollapsed = !navCollapsed">
-      <span class="sr-only">Toggle navigation</span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-      <span class="icon-bar"></span>
-    </button>
+  <div class="navbar-left">
+    <a href="/#/" class="navbar-map">Map</a>
+  </div>
+  <div class="navbar-center">
     <a href="/#/" class="navbar-brand">PitchUp</a>
   </div>
   <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
     <ul class="nav navbar-nav navbar-right">
-      <li ng-hide="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/sessions/new">Login</a></li>
-      <li ng-hide="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/users/new">Register</a></li>
       <li>
-        <a ng-show="appCtrl.currentUser" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{appCtrl.currentUser.username}}</a>
+        <a ng-class="{'logged':  appCtrl.currentUser }" class="dropdown-toggle navbar-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{appCtrl.currentUser.username}}</a>
         <ul class="dropdown-menu">
-          <li><a ng-click="navCollapsed = !navCollapsed" href="/#/teams">Join a Team</a></li>
-          <li><a ng-click="navCollapsed = !navCollapsed" href="/#/teams/new">Add a Team</a></li>
-          <li><a ng-click="navCollapsed = !navCollapsed" href="/#/users/{{appCtrl.currentUser.id}}">Profile</a></li>
-          <li><button ng-click="navCtrl.logout()" ng-click="navCollapsed = !navCollapsed" class="btn btn-link btn-logout">Logout</button></li>
+          <li ng-hide="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/sessions/new">Login</a></li>
+          <li ng-hide="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/users/new">Register</a></li>
+          <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/teams">Join a Team</a></li>
+          <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/teams/new">Add a Team</a></li>
+          <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/users/{{appCtrl.currentUser.id}}">Profile</a></li>
+          <li ng-show="appCtrl.currentUser"><button ng-click="navCtrl.logout()" ng-click="navCollapsed = !navCollapsed" class="btn btn-link btn-logout">Logout</button></li>
         </ul>
       </li>
     </ul>

@@ -28,36 +28,76 @@ nav {
   color: #263248;
 }
 .nav > li > a:hover, .nav > li > a:focus, .nav > li > a:visited{
-  background: white;
+  background-color: white;
   opacity: 0.95;
   color: #263248;
 }
+
+.navbar-center{
+  position: absolute;
+  margin: 0 auto;
+  width: 195px;
+  left: 47%;
+}
+
+.navbar-map {
+    background: url('../images/map_icon.svg') no-repeat center center;
+    background-size: contain;
+    display:block;
+    height:40px;
+    text-indent:-9999px;
+    width:44px;
+    margin-top: 15px;
+    margin-left: 10px;
+}
+
 .navbar-brand {
     background: url('../images/logo_navbar.svg') no-repeat center center;
     background-size: contain;
-    display:block;
+    display:inline-block;
     height:29px;
     text-indent:-9999px;
     width:195px;
     margin-top: 21px;
     margin-left: 10px;
+    text-align: center;
 }
+
+.navbar-menu {
+    background: url('../images/pitchup_icon.svg') no-repeat center center;
+    background-size: contain;
+    display:block;
+    height:60px;
+    text-indent:-9999px;
+    width:44px;
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.navbar-menu.logged{
+  background: url('../images/pitchup_icon_hover.svg') no-repeat center center;
+}
+
 .nav .open > a, .nav .open > a:hover, .nav .open > a:focus{
+  font-weight: 200;
   background-color: white;
   color: #263248;
 }
 .dropdown-menu > li > a, .dropdown-menu > li > button{
-    text-transform: uppercase;
-    background: white;
-    color: #263248;
+  font-weight: 200;
+  text-transform: uppercase;
+  background: white;
+  color: #263248;
 }
 .dropdown-menu > li > a:hover, .dropdown-menu > li > button:hover{
-    text-decoration: none;
-    background: white;
-    opacity: 0.75;
-    color: #263248;
+  font-weight: 200;
+  text-decoration: none;
+  background: white;
+  opacity: 0.75;
+  color: #263248;
 }
 .navbar-right .dropdown-menu{
+  font-weight: 200;
   text-align: center;
   left: -50px
 }

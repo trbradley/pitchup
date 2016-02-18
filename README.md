@@ -52,7 +52,7 @@ Feel free to get involved! Our waffleboard is available at https://waffle.io/trb
 
 ## Contributors
 
-* [Giamir Buoncristiani](https://github.com/michaellennox)
+* [Giamir Buoncristiani](https://github.com/giamir)
 * [Andrew Htun](https://github.com/Htunny)
 * [Tom Bradley](https://github.com/trbradley)
 * [Tony Young](https://github.com/TY231618)
