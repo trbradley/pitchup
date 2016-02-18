@@ -2,7 +2,7 @@ from flask.ext.restful import Resource, marshal, reqparse
 from server import api, db
 from server.models.enrollment import Enrollment
 from server.helpers.sessions import current_user
-from server.helpers.emails import new_enrollment_email
+# from server.helpers.emails import new_enrollment_email
 
 
 class EnrollmentsAPI(Resource):
@@ -22,7 +22,7 @@ class EnrollmentsAPI(Resource):
             db.session.commit()
         except Exception as e:
             return str(e), 400
-        new_enrollment_email('team_id')
+        new_enrollment_email(team_id)
         return 'Enrolled successfully', 201
 
 
