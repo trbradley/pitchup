@@ -1,3 +1,5 @@
+import os
+
 from server import app, db
 from flask_mail import Mail, Message
 from server.models.team import Team
@@ -10,19 +12,15 @@ app.config.update(
     MAIL_SERVER='smtp.gmail.com',
     MAIL_PORT=465,
     MAIL_USE_SSL=True,
-    MAIL_USERNAME = 'pitchuphelp@gmail.com',
-    MAIL_PASSWORD = ''
+    MAIL_USERNAME='pitchuphelp@gmail.com',
+    MAIL_PASSWORD=os.environ['MAIL_PASSWORD']
     )
 
 mail=Mail(app)
 
 def new_enrollment_email(team_id):
-    team = Team.query.filter_by(id=team_id).first()
-    print(team)
-    creator_id = team.created_by
-    creator = User.query.filter_by(id=creator_id).first()
-    creator_email = creator.email
-    # user_email = creator_email(team_id)
+    creator_id = Team.query.filter_by(id=team_id).first().created_by
+    creator_email = User.query.filter_by(id=creator_id).first().email
     msg = Message(
                 'PitchUp - New Enrollment',
                 sender='pitchuphelp@gmail.com',
@@ -31,14 +29,3 @@ def new_enrollment_email(team_id):
     msg.html = "<b>Someone has joined your team!</b>"
     mail.send(msg)
     return "Sent"
-#
-# def creator_email(team_id):
-#     team = Team.query.filter_by(id=team_id).first()
-#     print(team)
-#     creator_id = team.created_by
-#     print(creator_id)
-#     creator = User.query.filter_by(id=creator_id).first()
-#     print(creator)
-#     creator_email_addr = creator.email
-#     print(creator_email_addr)
-#     return creator_email_addr

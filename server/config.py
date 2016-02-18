@@ -11,6 +11,8 @@ class BaseConfig(object):
     DEBUG_TB_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
+
 
 
 class DevelopmentConfig(BaseConfig):
