@@ -13,6 +13,10 @@ nav {
   z-index: 10;
 }
 
+nav hr{
+  margin:10px 0;
+}
+
 .navbar{
   margin-bottom: 0px;
 }
@@ -37,7 +41,7 @@ nav {
   position: absolute;
   margin: 0 auto;
   width: 195px;
-  left: 44%;
+  left: 43%;
 }
 
 .navbar-map {
@@ -88,6 +92,10 @@ nav {
   text-transform: uppercase;
   background: white;
   color: #263248;
+}
+
+.dropdown-menu > li > a{
+  padding-top:10px;
 }
 .dropdown-menu > li > a:hover, .dropdown-menu > li > button:hover{
   font-weight: 200;

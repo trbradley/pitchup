@@ -13,6 +13,9 @@ pitchup.config(['$routeProvider', '$locationProvider',
     .when('/', {
       templateUrl: 'public/views/partials/home.html'
     })
+    .when('/credits', {
+      templateUrl: 'public/views/partials/credits.html'
+    })
     .when('/teams', {
       controller : 'TeamsController as ctrl',
       templateUrl: 'public/views/partials/teams/index.html'

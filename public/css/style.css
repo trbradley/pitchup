@@ -4,12 +4,18 @@
 @import url("map.css");
 @import url("markers.css");
 
-@media (min-width: 960px) {
-  .content.container.user,
-  .content.container.team,
-  .content.container.teams{
+@media (min-width: 800px) {
+  .content.container{
     max-width: 600px;
   }
+
+  .content.container.user,
+  .content.container.team,
+  .content.container.teams,
+  .content.container.credits{
+    max-width: 600px;
+  }
+
   .content.container.new-session,
   .content.container.new-user,
   .content.container.new-team,
@@ -64,6 +70,23 @@ textarea {
   outline: none;
   box-shadow:none !important;
   border: none;
+  color: #ccc;
+}
+
+input[type="date"],
+input[type="time"] {
+  outline: none;
+  box-shadow:none !important;
+  border: none;
+  width: 80%;
+  color: #ccc;
+  display: inline-block;
+  opacity: 1;
+}
+
+input + span i {
+  margin-top: 10px;
+  color: #999999;
 }
 
 input.form-control, textarea{

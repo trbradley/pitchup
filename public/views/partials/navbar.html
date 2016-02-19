@@ -3,18 +3,19 @@
     <a href="/#/" class="navbar-map">Map</a>
   </div>
   <div class="navbar-center">
-    <a href="/#/" class="navbar-brand">PitchUp</a>
+    <a href="/#/credits" class="navbar-brand">PitchUp</a>
   </div>
   <div class="collapse navbar-collapse" uib-collapse="navCollapsed">
     <ul class="nav navbar-nav navbar-right">
       <li>
-        <a ng-class="{'logged':  appCtrl.currentUser }" class="dropdown-toggle navbar-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">{{appCtrl.currentUser.username}}</a>
+        <a ng-class="{'logged':  appCtrl.currentUser }" class="dropdown-toggle navbar-menu" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"></a>
         <ul class="dropdown-menu">
+          <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/users/{{appCtrl.currentUser.id}}"><b>{{appCtrl.currentUser.username}}</b></a></li>
+          <hr ng-show="appCtrl.currentUser">
           <li ng-hide="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/sessions/new">Login</a></li>
           <li ng-hide="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/users/new">Register</a></li>
           <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/teams">Join a Team</a></li>
           <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/teams/new">Add a Team</a></li>
-          <li ng-show="appCtrl.currentUser"><a ng-click="navCollapsed = !navCollapsed" href="/#/users/{{appCtrl.currentUser.id}}">Profile</a></li>
           <li ng-show="appCtrl.currentUser"><button ng-click="navCtrl.logout()" ng-click="navCollapsed = !navCollapsed" class="btn btn-link btn-logout">Logout</button></li>
         </ul>
       </li>

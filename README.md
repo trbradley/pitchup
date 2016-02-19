@@ -1,7 +1,51 @@
-# PitchUp [![Build Status](https://travis-ci.org/trbradley/pitchup.svg?branch=master)](https://travis-ci.org/trbradley/pitchup) [![Coverage Status](https://coveralls.io/repos/github/trbradley/pitchup/badge.svg?branch=master)](https://coveralls.io/github/trbradley/pitchup?branch=master)
+# ![Alt text](http://i.imgur.com/Xj6MEei.png) [![Build Status](https://travis-ci.org/trbradley/pitchup.svg?branch=master)](https://travis-ci.org/trbradley/pitchup) [![Coverage Status](https://coveralls.io/repos/github/trbradley/pitchup/badge.svg?branch=master)](https://coveralls.io/github/trbradley/pitchup?branch=master)
 
-### Mission Statement
+## Mission Statement
 “Our mission is to provide sports enthusiasts with the platform to connect to sports teams in order to play at a time and a place that suits them. Our app/website will allow players to take part in their favourite hobby, make exercise more fun and competitive, and furthermore help inspire our users find a new passion for sport".
+
+![Alt text](http://i.imgur.com/qps4j6N.jpg)
+
+## Installation Instructions
+
+You can try the app remotely:
+>[https://pitchup.herokuapp.com/](https://pitchup.herokuapp.com/)
+
+or install it locally:
+
+Clone down from github and cd into the directory
+
+```
+$ git clone git@github.com:trbradley/pitchup.git
+$ cd pitchup
+```
+Follow this pill to setup your python environment:<br>
+💊 [Setup Python backend environment on MAC](docs/setup_backend.md)
+
+Install any dependencies then run the app
+
+```
+$ pip install
+$ npm install
+$ npm start
+```
+
+Visit `http://localhost:5000` to join a team.
+
+## Technologies
+
+### Frontend
+* Angular js
+* angular-google-maps
+* angular-animate
+* Tested with Jasmine, Karma and Protractor
+
+### Backend (API)
+* Python
+* Flask
+* Flask-restful
+* PostgreSQL
+* Tested with Flask unittest
+
 
 ### User Stories
 ```
@@ -30,21 +74,6 @@ So that I can get my team to full capacity,
 I would like to see how many extra people a player could bring.
 
 ```
-
-## Technologies
-
-### Frontend
-* Angular js
-* Tested with Jasmine, Karma and Protractor
-
-### Backend
-* Python
-* Flask
-* PostgreSQL
-* Tested with Flask unittest
-
-
-💊 [Setup Python backend environment on MAC](docs/setup_backend.md)
 
 ## Contributions
 
