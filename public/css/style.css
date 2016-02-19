@@ -70,7 +70,7 @@ textarea {
   outline: none;
   box-shadow:none !important;
   border: none;
-  color: #ccc;
+  color: #999999;
 }
 
 input[type="date"],
@@ -79,7 +79,7 @@ input[type="time"] {
   box-shadow:none !important;
   border: none;
   width: 80%;
-  color: #ccc;
+  color: #999999;
   display: inline-block;
   opacity: 1;
 }
