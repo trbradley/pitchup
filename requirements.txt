@@ -13,6 +13,7 @@ Flask-SQLAlchemy==2.1
 Flask-Testing==0.4.2
 gunicorn==19.4.5
 httpauth==0.3
+interpy==1.1
 itsdangerous==0.24
 Jinja2==2.8
 Mako==1.0.3

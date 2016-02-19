@@ -22,7 +22,7 @@ class EnrollmentsAPI(Resource):
             db.session.commit()
         except Exception as e:
             return str(e), 400
-        new_enrollment_email(team_id)
+        new_enrollment_email(team_id, current_user())
         return 'Enrolled successfully', 201
 
 

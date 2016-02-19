@@ -18,14 +18,17 @@ app.config.update(
 
 mail=Mail(app)
 
-def new_enrollment_email(team_id):
+def new_enrollment_email(team_id, current_user):
     creator_id = Team.query.filter_by(id=team_id).first().created_by
     creator_email = User.query.filter_by(id=creator_id).first().email
+    user_username = current_user.username
     msg = Message(
                 'PitchUp - New Enrollment',
                 sender='pitchuphelp@gmail.com',
                 recipients=[creator_email])
-    msg.body = "Someone has joined your team!"
-    msg.html = "<b>Someone has joined your team!</b>"
+    msg.body = "#{user_username} has joined your team! \
+                Congratulations, your team is now full and ready to play!"
+    msg.html = "<b>#{user_username} has joined your team! \
+                Congratulations, your team is now full and ready to play!</b>"
     mail.send(msg)
     return "Sent"
