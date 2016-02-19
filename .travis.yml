@@ -1,7 +1,7 @@
 sudo: required
 
 env:
-  - APP_SETTINGS=config.TestingConfig DATABASE_URL=postgresql://localhost/pitchup_test
+  - APP_SETTINGS=config.TestingConfig DATABASE_URL=postgresql://localhost/pitchup_test MAIL_PASSWORD=password
 
 language: python
 python:

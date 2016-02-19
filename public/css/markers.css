@@ -1,0 +1,19 @@
+.info-window{
+  min-width:250px;
+  min-height:150px;
+  text-transform: uppercase;
+  font-size: 12px;
+}
+
+.info-window i{
+  padding-right: 4px;
+}
+
+.info-window a, .info-window a:hover{
+  font-weight: bold;
+}
+
+.info-window h5{
+  padding: 8px 0;
+  border-bottom: 1px solid #263248;
+}

@@ -61,6 +61,6 @@
     <div ng-hide="status=='ready'" class="loader" ng-include src="'public/views/partials/loader.html'"></div>
     <nav class="navbar" ng-controller="NavbarController as navCtrl" ng-include src="'public/views/partials/navbar.html'"></nav>
     <div class="map" ng-controller="GeoLocationController as mapCtrl" ng-include src="'public/views/partials/map.html'"></div>
-    <div ng-view class="container content"></div>
+    <div ng-view class="container content {{ctrl.viewClass}}"></div>
   </body>
 </html>

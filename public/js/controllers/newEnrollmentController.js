@@ -3,6 +3,7 @@ pitchup.controller('NewEnrollmentController',
 function(EnrollmentsResource, $location, $route, $routeParams){
   var self = this;
   self.id = $routeParams.id;
+  self.viewClass = 'new-enrollment';
 
   self.enroll = function() {
     EnrollmentsResource.postEnrollments(

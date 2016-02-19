@@ -11,7 +11,7 @@ team_fields = {
     'capacity': fields.Integer,
     'number_players': fields.Integer,
     'pitch_postcode': fields.String,
-    'time': fields.DateTime
+    'time': fields.DateTime(dt_format='iso8601')
 }
 
 user_fields = {
@@ -31,7 +31,7 @@ adv_team_fields = {
     'capacity': fields.Integer,
     'number_players': fields.Integer,
     'pitch_postcode': fields.String,
-    'time': fields.DateTime,
+    'time': fields.DateTime(dt_format='iso8601'),
     'creator': fields.Nested(user_fields),
     'users': fields.List(fields.Nested(enrollment_fields))
 }

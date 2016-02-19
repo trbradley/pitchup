@@ -1,0 +1,7 @@
+<div class="info-window">
+  <h5>{{parameter.name}}</h5>
+  <p><i class="glyphicon glyphicon-calendar"></i> {{ parameter.time | date: 'longDate' }}</p>
+  <p><i class="glyphicon glyphicon-time"></i> {{ parameter.time | date: 'shortTime' }}</p>
+  <p><i class="glyphicon glyphicon-user"></i> <b>{{parameter.needed}}</b> players needed</p>
+  <p><i class="glyphicon glyphicon-hand-right"></i> <a href="/#/teams/{{parameter.id}}">Show More</a></p>
+</div>

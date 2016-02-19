@@ -2,6 +2,7 @@ pitchup.controller('TeamController',
 ['TeamsResource', '$routeParams',
 function(TeamsResource, $routeParams) {
   var self = this;
+  self.viewClass = 'team';
   self.id = $routeParams.id;
 
   self.init = function() {

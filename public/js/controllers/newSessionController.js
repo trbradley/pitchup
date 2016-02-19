@@ -2,6 +2,7 @@ pitchup.controller('NewSessionController',
 ['$location', '$route', 'UserAuth',
 function ($location, $route, UserAuth){
   var self = this;
+  self.viewClass = 'new-session';
 
   self.login = function () {
     UserAuth.login(self.username, self.password)
