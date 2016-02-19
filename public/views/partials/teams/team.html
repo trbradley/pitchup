@@ -1,11 +1,18 @@
-<div ng-controller="TeamController as ctrl">
+<div>
   <header>
     <h1>{{ctrl.team.name}}</h1>
-    <a ng-href="/#/teams/{{ctrl.team.id}}/enrollments/new"> Join team</a>
   </header>
-  <section class="description row">
-      <h3>Team info</h3>
-      <p>Capacity: {{ctrl.team.capacity}}</p>
-      <p>Number of players: {{ctrl.team.number_players}}</p>
+  <section class="description">
+      <p><i class="glyphicon glyphicon-calendar"></i> {{ ctrl.team.time | date: 'longDate' }}</p>
+      <p><i class="glyphicon glyphicon-time"></i> {{ ctrl.team.time | date: 'shortTime' }}</p>
+      <p><i class="glyphicon glyphicon-user"></i> <b>{{ctrl.team.capacity}}</b> players to play the game</p>
+      <p><i class="glyphicon glyphicon-bullhorn"></i> <b>{{ctrl.team.capacity - ctrl.team.number_players}}</b> players still needed</p>
+      <h3 ng-show="ctrl.team.users.length">Already enrolled</h3>
+      <ul class="items-result list-group" ng-show="ctrl.team.users">
+        <li class="list-group-item" ng-repeat="user in ctrl.team.users">
+          <a ng-href="/#/users/{{user.user.id}}">{{user.user.username}}</a> <span class="pull-right" ng-repeat="i in range(user.number_players) track by $index"><i class="glyphicon glyphicon-user"></i></span>
+        </li>
+      </ul>
+        <a ng-show="appCtrl.currentUser" href="/#/teams/{{ctrl.team.id}}/enrollments/new" class="btn">Join team</a>
   </section>
 </div>

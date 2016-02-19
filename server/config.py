@@ -3,13 +3,16 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class BaseConfig(object):
-    SECRET_KEY = ''
+    SECRET_KEY = 'dev'
+    SESSION_TYPE = 'filesystem'
     DEBUG = False
     BCRYPT_LOG_ROUNDS = 13
     WTF_CSRF_ENABLED = True
     DEBUG_TB_ENABLED = False
     DEBUG_TB_INTERCEPT_REDIRECTS = False
     SQLALCHEMY_TRACK_MODIFICATIONS = False
+    # MAIL_PASSWORD = os.environ['MAIL_PASSWORD']
+
 
 
 class DevelopmentConfig(BaseConfig):

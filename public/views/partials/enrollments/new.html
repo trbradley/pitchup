@@ -1,0 +1,9 @@
+<form ng-submit="ctrl.enroll()">
+  <h2>Join the team</h2>
+  <div class="form-group">
+    <input type="number" class="form-control" name="numberPlayers" placeholder="How many players are you bringing?" ng-model="ctrl.numberPlayers" min="1" autocomplete="off" required>
+  </div>
+  <div>
+    <button type="submit" class="btn btn-default" ng-disabled="disabled">Enroll</button>
+  </div>
+</form>

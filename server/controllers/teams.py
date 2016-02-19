@@ -1,131 +1,74 @@
-#################
-#### imports ####
-#################
-
 from flask import url_for, request
 from flask.ext.restful import Resource, fields, marshal, reqparse
-from server import api, db
+from server import api, db, session
 from server.models.team import Team
-
-################
-#### config ####
-################
+from server.helpers.sessions import current_user
+from datetime import datetime
 
 team_fields = {
     'id': fields.Integer,
     'name': fields.String,
     'capacity': fields.Integer,
-    'number_players': fields.Integer
+    'number_players': fields.Integer,
+    'pitch_postcode': fields.String,
+    'time': fields.DateTime(dt_format='iso8601')
 }
 
-################
-#### routes ####
-################
+user_fields = {
+    'id': fields.Integer,
+    'username': fields.String,
+    'email': fields.String
+}
+
+enrollment_fields = {
+    'number_players': fields.Integer,
+    'user': fields.Nested(user_fields)
+}
+
+adv_team_fields = {
+    'id': fields.Integer,
+    'name': fields.String,
+    'capacity': fields.Integer,
+    'number_players': fields.Integer,
+    'pitch_postcode': fields.String,
+    'time': fields.DateTime(dt_format='iso8601'),
+    'creator': fields.Nested(user_fields),
+    'users': fields.List(fields.Nested(enrollment_fields))
+}
+
 
 class TeamAPI(Resource):
     def get(self, id):
         team = Team.query.get(id)
-        return {'team': marshal(team, team_fields)}
-
-    # def put(self, id):
-    #     pass
-    #
-    # def delete(self, id):
-    #     pass
+        return {'team': marshal(team, adv_team_fields)}
 
 
 class TeamsAPI(Resource):
     def __init__(self):
         self.reqparse = reqparse.RequestParser()
-        self.reqparse.add_argument(
-            'name',
-            type=str,
-            required=True,
-            help='No team name provided'
-        )
-        self.reqparse.add_argument(
-            'capacity',
-            type=int,
-            required=True,
-            help='No team capacity provided'
-        )
-        self.reqparse.add_argument(
-            'number_players',
-            type=int,
-            required=True,
-            help='No number of players provided'
-        )
+        self.reqparse.add_argument('name')
+        self.reqparse.add_argument('capacity')
+        self.reqparse.add_argument('number_players')
+        self.reqparse.add_argument('pitch_postcode')
+        self.reqparse.add_argument('time')
         super(TeamsAPI, self).__init__()
 
     def get(self):
-        teams = Team.query.all()
+        teams = Team.query.filter(Team.number_players < Team.capacity, Team.time > datetime.now()).order_by(Team.time)
         return {'teams': [marshal(team, team_fields) for team in teams]}
 
     def post(self):
+        if not current_user():
+            return 'You need to be logged in', 403
         args = self.reqparse.parse_args()
-        team = Team(
-            name=args['name'],
-            capacity=args['capacity'],
-            number_players=args['number_players']
-        )
-        db.session.add(team)
-        db.session.commit()
+        try:
+            team = Team(args)
+            db.session.add(team)
+            db.session.commit()
+        except Exception as e:
+            return str(e), 400
         return 'Team created successfully', 201
 
 
 api.add_resource(TeamAPI, '/teams/<int:id>', endpoint='team')
 api.add_resource(TeamsAPI, '/teams', endpoint='teams')
-
-# @team_blueprint.route('/teams')
-# def get_teams():
-#     teams = Team.query.all()
-#     for team in teams:
-#         print(team.name)
-#     return 'teams'
-#
-# @team_blueprint.route('/teams', methods=['POST'])
-# def post_teams():
-#     team = Team(
-#             name='squadra',
-#             capacity=10,
-#             number_players=7
-#         )
-#     db.session.add(team)
-#     db.session.commit()
-#     return 'teams'
-#
-# @team_blueprint.route('/teams')
-# def get_team():
-#     team = Team.query.get(1)
-#     print(team.name)
-#     return 'team'
-
-
-# @user_blueprint.route('/login', methods=['GET', 'POST'])
-# def login():
-#     form = LoginForm(request.form)
-#     if form.validate_on_submit():
-#         user = User.query.filter_by(email=form.email.data).first()
-#         if user and bcrypt.check_password_hash(
-#                 user.password, request.form['password']):
-#             login_user(user)
-#             flash('You are logged in. Welcome!', 'success')
-#             return redirect(url_for('user.members'))
-#         else:
-#             flash('Invalid email and/or password.', 'danger')
-#             return render_template('user/login.html', form=form)
-#     return render_template('user/login.html', title='Please Login', form=form)
-#
-#
-# @user_blueprint.route('/logout')
-# @login_required
-# def logout():
-#     logout_user()
-#     flash('You were logged out. Bye!', 'success')
-#     return redirect(url_for('main.home'))
-#
-#
-# @user_blueprint.route('/members')
-# @login_required
-# def members():
-#     return render_template('user/members.html')

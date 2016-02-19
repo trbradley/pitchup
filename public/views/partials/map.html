@@ -1,0 +1,6 @@
+<ui-gmap-google-map center="mapCtrl.map.center" zoom="mapCtrl.map.zoom" draggable="true">
+  <ui-gmap-window show="mapCtrl.window.show" coords="mapCtrl.window.model" templateUrl="mapCtrl.window.templateUrl" options="mapCtrl.window.options" closeclick="mapCtrl.window.closeClick()" templateParameter="mapCtrl.window.params">
+  </ui-gmap-window>
+  <ui-gmap-markers models="mapCtrl.markers" coords="'self'" icon="'icon'" click="mapCtrl.onClick" options="mapCtrl.markerOptions">
+  </ui-gmap-markers>
+</ui-gmap-google-map>

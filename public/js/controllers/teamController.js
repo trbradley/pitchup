@@ -1,12 +1,17 @@
-pitchup.controller('TeamController', ['TeamsResource', '$routeParams', function(TeamsResource, $routeParams) {
+pitchup.controller('TeamController',
+['TeamsResource', '$routeParams',
+function(TeamsResource, $routeParams) {
   var self = this;
+  self.viewClass = 'team';
   self.id = $routeParams.id;
 
   self.init = function() {
     TeamsResource.getTeam(self.id)
-      .then(function(response) {
-        self.team = response.data.team;
-      });
+    .then(function(response) {
+      self.team = response.data.team;
+    })
+    .catch(function(response) {
+    });
   };
 
   self.init();

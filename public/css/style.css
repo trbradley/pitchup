@@ -1,0 +1,131 @@
+@import url("animate.css");
+@import url("loader.css");
+@import url("navbar.css");
+@import url("map.css");
+@import url("markers.css");
+
+@media (min-width: 800px) {
+  .content.container{
+    max-width: 600px;
+  }
+
+  .content.container.user,
+  .content.container.team,
+  .content.container.teams,
+  .content.container.credits{
+    max-width: 600px;
+  }
+
+  .content.container.new-session,
+  .content.container.new-user,
+  .content.container.new-team,
+  .content.container.new-enrollment{
+    max-width: 400px;
+  }
+}
+
+body{
+  background: white;
+  color: #263248;
+  font-family: "Montserrat", "Helvetica Neue", sans-serif;
+  font-weight: 200;
+  text-transform: uppercase;
+}
+
+a, a:hover {
+  color: #263248;
+}
+
+i{
+  padding-right: 6px;
+}
+
+.content li{
+  border: none !important;
+  padding: 10px 0 !important;
+}
+
+h1, h2, h3, h4, h5, h6{
+  font-weight: 100;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transform:scale(1, 0.8);
+}
+
+h1, h2, h3{
+  padding: 10px 0;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #263248;
+}
+
+h3{
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="url"],
+input[type="number"],
+textarea {
+  outline: none;
+  box-shadow:none !important;
+  border: none;
+  color: #999999;
+}
+
+input[type="date"],
+input[type="time"] {
+  outline: none;
+  box-shadow:none !important;
+  border: none;
+  width: 80%;
+  color: #999999;
+  display: inline-block;
+  opacity: 1;
+}
+
+input + span i {
+  margin-top: 10px;
+  color: #999999;
+}
+
+input.form-control, textarea{
+  background: #ffffff;
+  margin-bottom: 20px;
+  border-radius: 0;
+  border-bottom: 1px solid #ccc;
+}
+
+button[type='submit'], a.btn{
+  background: #e9e9e9;
+  margin: 20px 0 30px;
+  border: none;
+  border-radius: 0;
+  color: #4b4f54;
+  font-weight: 600;
+}
+
+button[type='submit']:hover, a.btn:hover{
+  background: #ccc;
+  border-radius: 0;
+  color: #263248;
+}
+
+input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 500px #fafafa inset !important;
+}
+
+
+.content{
+  margin-top: 40px;
+  background: white;
+  opacity: 0.95;
+  padding: 20px 50px;
+}
+
+.content:empty{
+  display: none;
+}
+
+.ng-enter { animation: slideInDown 0.4s both ease-in; -webkit-animation-delay: 0.4s; animation-delay: 0.4s; }
+.ng-leave { animation: slideOutDown 0.4s both ease-in; }

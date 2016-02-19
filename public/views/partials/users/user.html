@@ -1,0 +1,14 @@
+<div>
+  <header>
+    <h1>{{ctrl.user.username}}</h1>
+  </header>
+  <section class="description">
+    <p><i class="glyphicon glyphicon-send"></i> <a href="mailto:{{ctrl.user.email}}" title="send an email to {{ctrl.user.username}}">{{ctrl.user.email}}</a></p>
+    <h3 ng-show="ctrl.user.teams.length">Teams joined</h3>
+    <ul class="items-result list-group" ng-show="ctrl.user.teams">
+      <li class="list-group-item" ng-repeat="team in ctrl.user.teams">
+        <a ng-href="/#/teams/{{team.team.id}}">{{team.team.name}}</a> <span class="pull-right" ng-repeat="i in range(team.number_players) track by $index"><i class="glyphicon glyphicon-user"></i></span>
+      </li>
+    </ul>
+  </section>
+</div>
