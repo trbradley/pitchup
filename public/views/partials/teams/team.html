@@ -14,5 +14,7 @@
         </li>
       </ul>
         <a ng-show="appCtrl.currentUser" href="/#/teams/{{ctrl.team.id}}/enrollments/new" class="btn">Join team</a>
+        <a ng-hide="appCtrl.currentUser" href="/#/sessions/new" class="btn">Login</a>
+        <a ng-hide="appCtrl.currentUser" href="/#/users/new" class="btn">Register</a>
   </section>
 </div>
