@@ -10,5 +10,6 @@
         <a ng-href="/#/teams/{{team.team.id}}">{{team.team.name}}</a> <span class="pull-right" ng-repeat="i in range(team.number_players) track by $index"><i class="glyphicon glyphicon-user"></i></span>
       </li>
     </ul>
+    <a ng-show="appCtrl.currentUser" href="/#/teams/new" class="btn">Add Team</a>
   </section>
 </div>

@@ -25,7 +25,7 @@ def new_enrollment_email(team_id):
                 'PitchUp - New Enrollment',
                 sender='pitchuphelp@gmail.com',
                 recipients=[creator_email])
-    msg.body = "Someone has joined your team! Congratulations, your team is now complete and ready to play!"
-    msg.html = "<b>Someone has joined your team! Congratulations, your team is now complete and ready to play!</b>"
+    msg.body = "Someone has joined your team! Congratulations!"
+    msg.html = "<b>Someone has joined your team! Congratulations!</b>"
     mail.send(msg)
     return "Sent"
