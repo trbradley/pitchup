@@ -8,7 +8,7 @@
 ## Installation Instructions
 
 You can try the app remotely:
->[https://pitchup.herokuapp.com/](https://pitchup.herokuapp.com/)
+>[http://pitchup.herokuapp.com/](http://pitchup.herokuapp.com/)
 
 or install it locally:
 
